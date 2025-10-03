@@ -1,6 +1,7 @@
 import React from 'react';
 import Card from '@/components/ui/Card';
 import { useTranslation } from '@/hooks/useTranslation';
+import clsx from 'clsx';
 
 interface Feature {
   icon: string;
@@ -45,24 +46,24 @@ export const FeaturesSection: React.FC = () => {
   return (
     <section
       id="features"
-      className="py-20 bg-background-light dark:bg-gray-900"
+      className="features-section"
     >
       <div className="max-w-6xl mx-auto px-4 sm:px-6">
-        <h2 className="text-2xl sm:text-3xl font-bold text-center mb-12">
+        <h2 className="features-title">
           {t('features.title')}
         </h2>
-        <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+        <div className="features-grid">
           {features.map((feature, idx) => (
             <Card
               key={idx}
-              className="flex flex-col items-start text-left"
+              className="feature-card"
               shadow
             >
-              <div className="text-3xl mb-4" aria-hidden="true">
+              <div className="feature-icon" aria-hidden="true">
                 {feature.icon}
               </div>
-              <h3 className="text-lg font-semibold mb-2">{feature.title}</h3>
-              <p className="text-sm text-gray-600 dark:text-gray-400">
+              <h3 className="feature-card-title">{feature.title}</h3>
+              <p className="feature-description">
                 {feature.description}
               </p>
             </Card>
@@ -70,7 +71,7 @@ export const FeaturesSection: React.FC = () => {
         </div>
         <p
           id="pricing"
-          className="mt-12 text-center text-base font-medium text-primary"
+          className="features-pricing-link"
         >
           {t('features.pricing')}
         </p>

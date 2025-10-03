@@ -31,17 +31,17 @@ export const ContactSection: React.FC = () => {
   });
 
   return (
-    <section id="contact" className="py-20 bg-white dark:bg-gray-950">
+    <section id="contact" className="contact-section">
       <div className="max-w-2xl mx-auto px-4 sm:px-6">
-        <h2 className="text-2xl sm:text-3xl font-bold mb-8 text-center">
+        <h2 className="contact-title">
           {t('contact.title')}
         </h2>
         {status === 'success' ? (
-          <p className="text-green-600 dark:text-green-400 text-center">
+          <p className="form-success-message">
             {t('contact.success')}
           </p>
         ) : (
-          <form className="space-y-4" onSubmit={handleSubmit} noValidate>
+          <form className="contact-form" onSubmit={handleSubmit} noValidate>
             <div>
               <Input
                 id="name"
@@ -51,7 +51,7 @@ export const ContactSection: React.FC = () => {
                 onChange={(e) => handleChange('name', e.target.value)}
               />
               {errors.name && (
-                <p className="text-red-600 text-sm mt-1" role="alert">
+                <p className="form-error-message" role="alert">
                   {errors.name}
                 </p>
               )}
@@ -65,7 +65,7 @@ export const ContactSection: React.FC = () => {
                 onChange={(e) => handleChange('email', e.target.value)}
               />
               {errors.email && (
-                <p className="text-red-600 text-sm mt-1" role="alert">
+                <p className="form-error-message" role="alert">
                   {errors.email}
                 </p>
               )}
@@ -78,13 +78,13 @@ export const ContactSection: React.FC = () => {
                 onChange={(e) => handleChange('message', e.target.value)}
               />
               {errors.message && (
-                <p className="text-red-600 text-sm mt-1" role="alert">
+                <p className="form-error-message" role="alert">
                   {errors.message}
                 </p>
               )}
             </div>
             {status === 'error' && (
-              <p className="text-red-600 text-sm" role="alert">
+              <p className="form-error-message" role="alert">
                 {t('contact.error')}
               </p>
             )}

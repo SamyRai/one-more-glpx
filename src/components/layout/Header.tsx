@@ -3,6 +3,7 @@ import { NavLink } from 'react-router-dom';
 import { Button } from '@/components/ui/Button';
 import { useTheme } from '@/hooks/useTheme';
 import { useTranslation } from '@/hooks/useTranslation';
+import clsx from 'clsx';
 
 /**
  * Header component containing navigation links, theme toggle and language
@@ -21,24 +22,24 @@ export const Header: React.FC = () => {
   ];
 
   return (
-    <header className="sticky top-0 z-40 bg-white/70 dark:bg-gray-900/70 backdrop-blur-md border-b border-gray-200 dark:border-gray-700">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 flex items-center justify-between">
-        <NavLink to="/" className="text-xl font-bold">
+    <header className="header">
+      <div className="header-content">
+        <NavLink to="/" className="header-logo">
           Week‑to‑Ready
         </NavLink>
         {/* Desktop nav */}
-        <nav className="hidden md:flex gap-6 items-center">
+        <nav className="header-nav">
           {navItems.map(({ to, label }) => (
             <a
               key={to}
               href={to}
-              className="text-sm font-medium hover:text-primary-dark focus:outline-none focus:underline"
+              className="header-nav-link"
             >
               {label}
             </a>
           ))}
         </nav>
-        <div className="flex items-center gap-3">
+        <div className="header-actions">
           {/* Theme toggle */}
           <Button
             variant="ghost"
@@ -53,7 +54,7 @@ export const Header: React.FC = () => {
             aria-label="Select language"
             value={locale}
             onChange={(e) => setLocale(e.target.value)}
-            className="bg-transparent border border-gray-300 dark:border-gray-600 rounded-xl px-2 py-1 text-sm focus:outline-none focus:ring-2 focus:ring-primary"
+            className="select-transparent"
           >
             <option value="en">EN</option>
             <option value="de">DE</option>
@@ -62,7 +63,7 @@ export const Header: React.FC = () => {
           <Button
             variant="ghost"
             size="sm"
-            className="md:hidden"
+            className="mobile-menu-button"
             aria-label="Toggle menu"
             aria-expanded={mobileOpen}
             onClick={() => setMobileOpen((open) => !open)}
@@ -73,13 +74,13 @@ export const Header: React.FC = () => {
       </div>
       {/* Mobile nav panel */}
       {mobileOpen && (
-        <nav className="md:hidden bg-white dark:bg-gray-900 border-t border-gray-200 dark:border-gray-700">
-          <ul className="flex flex-col gap-2 px-4 py-4">
+        <nav className={clsx("mobile-nav", "md:hidden")}>
+          <ul className="mobile-nav-list">
             {navItems.map(({ to, label }) => (
               <li key={to}>
                 <a
                   href={to}
-                  className="block py-2 text-sm font-medium hover:text-primary-dark"
+                  className="mobile-nav-link"
                   onClick={() => setMobileOpen(false)}
                 >
                   {label}
