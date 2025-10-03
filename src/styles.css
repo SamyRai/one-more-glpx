@@ -1,0 +1,14 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Custom global styles */
+body {
+  @apply transition-colors duration-300 ease-in-out;
+}
+
+/* Focus outlines for accessibility */
+a:focus,
+button:focus {
+  @apply outline-none ring-2 ring-primary-dark ring-offset-2;
+}
