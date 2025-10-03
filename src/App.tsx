@@ -1,6 +1,7 @@
 import React from 'react';
 import { HashRouter as Router } from 'react-router-dom';
 import { ThemeProvider } from '@/contexts/ThemeContext';
+import { TranslationProvider } from '@/contexts/TranslationContext';
 import Header from '@/components/layout/Header';
 import Footer from '@/components/layout/Footer';
 import AnimatedRoutes from '@/routes';
@@ -21,12 +22,14 @@ function Layout({ children }: { children: React.ReactNode }) {
 function App() {
   return (
     <ThemeProvider>
+      <TranslationProvider>
         <Router future={{ v7_startTransition: true, v7_relativeSplatPath: true }}>
           <Layout>
             <AnimatedRoutes />
           </Layout>
           <ThemeModal />
         </Router>
+      </TranslationProvider>
     </ThemeProvider>
   );
 }
