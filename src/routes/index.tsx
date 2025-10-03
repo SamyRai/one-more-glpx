@@ -8,7 +8,7 @@ import StarterPack from '@/pages/StarterPack';
 import Book from '@/pages/Book';
 import Privacy from '@/pages/Privacy';
 import NotFound from '@/pages/NotFound';
-import Page from '@/components/ui/Page';
+import { Page } from '@/components/ui/Page';
 
 function AnimatedRoutes() {
   const location = useLocation();

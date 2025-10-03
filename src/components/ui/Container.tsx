@@ -1,7 +1,17 @@
-import React from 'react';
+import * as React from 'react';
 
-function Container({ children }: { children: React.ReactNode }) {
-  return <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">{children}</div>;
-}
+import { cn } from '@/lib/utils';
 
-export default Container;
+const Container = React.forwardRef<
+  HTMLDivElement,
+  React.HTMLAttributes<HTMLDivElement>
+>(({ className, ...props }, ref) => (
+  <div
+    ref={ref}
+    className={cn('container', className)}
+    {...props}
+  />
+));
+Container.displayName = 'Container';
+
+export { Container };

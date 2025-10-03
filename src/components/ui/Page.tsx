@@ -1,23 +1,29 @@
-import React from 'react';
+import * as React from 'react';
 import { motion, useReducedMotion } from 'framer-motion';
+import { cn } from '@/lib/utils';
 
-interface PageProps {
-  children: React.ReactNode;
-}
-
-function Page({ children }: PageProps) {
-  const prefers = useReducedMotion();
+const Page = React.forwardRef<
+  HTMLDivElement,
+  React.HTMLAttributes<HTMLDivElement>
+>(({ className, ...props }, ref) => {
+  const prefersReducedMotion = useReducedMotion();
 
   return (
     <motion.div
+      ref={ref}
+      className={cn(className)}
       initial={{ opacity: 0, y: 4 }}
       animate={{ opacity: 1, y: 0 }}
       exit={{ opacity: 0, y: -4 }}
-      transition={{ duration: prefers ? 0 : 0.22, ease: [0.16, 1, 0.3, 1] }}
-    >
-      {children}
-    </motion.div>
+      transition={{
+        duration: prefersReducedMotion ? 0 : 0.22,
+        ease: [0.16, 1, 0.3, 1],
+      }}
+      {...props}
+    />
   );
-}
+});
 
-export default Page;
+Page.displayName = 'Page';
+
+export { Page };

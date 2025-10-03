@@ -1,13 +1,53 @@
-import React from 'react';
+import * as React from 'react';
 import { Link } from 'react-router-dom';
 import { motion, useReducedMotion } from 'framer-motion';
 import { ArrowRight } from 'lucide-react';
 import { usePosts } from '@/hooks/usePosts';
-import Container from '@/components/ui/Container';
+import { type Post } from '@/types';
+import { Container } from '@/components/ui/Container';
+import { Card } from '@/components/ui/Card';
+import { Button } from '@/components/ui/Button';
+
+function ArticleItem({ post }: { post: Post }) {
+  const itemVariants = {
+    hidden: { opacity: 0, y: 6 },
+    visible: { opacity: 1, y: 0 },
+  };
+
+  return (
+    <motion.div variants={itemVariants} className="relative">
+      <Link to={`/posts/${post.slug}`} className="group block p-5">
+        <div className="flex items-baseline justify-between gap-4">
+          <div>
+            <p className="text-xs text-muted-foreground">
+              {post.date} &middot; {post.topic}
+            </p>
+            <h3 className="mt-1 font-medium group-hover:underline">
+              {post.title}
+            </h3>
+            <p className="mt-1 text-sm text-muted-foreground">
+              {post.excerpt}
+            </p>
+          </div>
+          <ArrowRight className="h-4 w-4 text-muted-foreground transition-colors group-hover:text-primary" />
+        </div>
+      </Link>
+    </motion.div>
+  );
+}
 
 function FeaturedArticles() {
   const posts = usePosts().slice(0, 3);
   const prefersReduced = useReducedMotion();
+
+  const containerVariants = {
+    hidden: {},
+    visible: {
+      transition: {
+        staggerChildren: prefersReduced ? 0 : 0.06,
+      },
+    },
+  };
 
   return (
     <motion.section
@@ -15,42 +55,31 @@ function FeaturedArticles() {
       whileInView={{ opacity: 1 }}
       viewport={{ once: true }}
       transition={{ duration: prefersReduced ? 0 : 0.3 }}
-      className="py-16 md:py-24"
+      className="py-16 lg:py-24"
     >
       <Container>
         <div className="flex items-center justify-between">
           <h2 className="text-2xl font-semibold">From the series</h2>
-          <Link to="/posts" className="text-sm underline">All posts</Link>
+          <Button variant="link" asChild>
+            <Link to="/posts">All posts</Link>
+          </Button>
         </div>
-        <motion.div
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true }}
-          variants={{ hidden: {}, visible: { transition: { staggerChildren: prefersReduced ? 0 : 0.06 } } }}
-          className="mt-8 rounded-[var(--radius,14px)] ring-1 ring-[var(--ring)] bg-[var(--surface)] divide-y"
-        >
-          {posts.map(p => (
-            <motion.div
-              key={p.slug}
-              variants={{ hidden: { opacity: 0, y: 6 }, visible: { opacity: 1, y: 0 } }}
-              transition={{ duration: prefersReduced ? 0 : 0.28 }}
-            >
-              <Link to={`/posts/${p.slug}`} className="group block p-5">
-                <div className="flex items-baseline justify-between gap-4">
-                  <div>
-                    <div className="text-xs text-[var(--muted-2)]">{p.date} · {p.topic}</div>
-                    <div className="mt-1 font-medium group-hover:underline">{p.title}</div>
-                    <p className="mt-1 text-sm text-[var(--muted)]">{p.excerpt}</p>
-                  </div>
-                  <ArrowRight className="h-4 w-4 text-[var(--muted-2)] group-hover:text-[var(--accent-700)]" />
-                </div>
-              </Link>
-            </motion.div>
-          ))}
-        </motion.div>
+        <Card className="mt-8 p-0">
+          <motion.div
+            variants={containerVariants}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, amount: 0.1 }}
+            className="divide-y"
+          >
+            {posts.map((post) => (
+              <ArticleItem key={post.slug} post={post} />
+            ))}
+          </motion.div>
+        </Card>
       </Container>
     </motion.section>
   );
 }
 
-export default FeaturedArticles;
+export { FeaturedArticles };

@@ -1,6 +1,6 @@
 import { render, screen } from '@testing-library/react';
 import App from './App';
-import { TranslationProvider } from './contexts/TranslationContext';
+import { TranslationProvider } from '@/contexts/TranslationContext';
 
 test('renders the main app component and displays the hero headline', async () => {
   render(
