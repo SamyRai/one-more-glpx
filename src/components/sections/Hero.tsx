@@ -12,7 +12,7 @@ import {
 } from 'lucide-react';
 import { Container } from '@/components/ui/Container';
 import { Button } from '@/components/ui/Button';
-import { Badge, badgeVariants } from '@/components/ui/Badge';
+import { badgeVariants } from '@/components/ui/Badge';
 import {
   Card,
   CardContent,

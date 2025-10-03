@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import { Download, Calendar, ArrowRight } from "lucide-react";
 import { useUTM } from "@/hooks/useUTM";
 import { ls, trackEvent } from "@/lib/localStorage";
-import Container from "@/components/ui/Container";
+import { Container } from "@/components/ui/Container";
 
 function StarterPack() {
   const utm = useUTM();
