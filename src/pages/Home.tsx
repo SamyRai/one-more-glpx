@@ -1,20 +1,26 @@
-import React from 'react';
-import HeroSection from '@/components/sections/HeroSection';
-import FeaturesSection from '@/components/sections/FeaturesSection';
-import ContactSection from '@/components/sections/ContactSection';
+import React, { useEffect } from 'react';
+import Hero from '@/components/sections/Hero';
+import Logos from '@/components/sections/Logos';
+import HowItWorks from '@/components/sections/HowItWorks';
+import EvidenceTeaser from '@/components/sections/EvidenceTeaser';
+import FeaturedArticles from '@/components/sections/FeaturedArticles';
+import FAQ from '@/components/sections/FAQ';
 
-/**
- * Home page composes the landing page sections. Additional sections can be
- * inserted here for testimonials, FAQs, etc.
- */
-export const Home: React.FC = () => {
+function Home() {
+  useEffect(() => {
+    document.title = "Week‑to‑Ready • Kubernetes Security Baseline";
+  }, []);
+
   return (
     <main>
-      <HeroSection />
-      <FeaturesSection />
-      <ContactSection />
+      <Hero />
+      <Logos />
+      <HowItWorks />
+      <EvidenceTeaser />
+      <FeaturedArticles />
+      <FAQ />
     </main>
   );
-};
+}
 
 export default Home;
