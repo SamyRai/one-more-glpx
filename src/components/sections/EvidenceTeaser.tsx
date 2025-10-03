@@ -1,12 +1,13 @@
-import React from 'react';
-import { useNavigate } from 'react-router-dom';
+import * as React from 'react';
+import { Link } from 'react-router-dom';
 import { motion, useReducedMotion } from 'framer-motion';
 import { Download } from 'lucide-react';
-import Container from '@/components/ui/Container';
+import { Container } from '@/components/ui/Container';
+import { Card } from '@/components/ui/Card';
+import { Button } from '@/components/ui/Button';
 
 function EvidenceTeaser() {
   const prefersReduced = useReducedMotion();
-  const navigate = useNavigate();
 
   return (
     <motion.section
@@ -14,26 +15,30 @@ function EvidenceTeaser() {
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
       transition={{ duration: prefersReduced ? 0 : 0.3 }}
-      className="py-16 md:py-24"
+      className="py-16 lg:py-24"
     >
       <Container>
-        <div className="rounded-[var(--radius,14px)] ring-1 ring-[var(--ring)] bg-[var(--surface)] p-8 md:p-10 border-l-4 border-[var(--accent-600)]">
-          <div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-6">
+        <Card className="border-l-4 border-primary p-8 md:p-10">
+          <div className="flex flex-col items-start justify-between gap-6 md:flex-row md:items-center">
             <div>
-              <h3 className="text-xl md:text-2xl font-semibold">Compliance Evidence Starter Pack</h3>
-              <p className="text-[var(--text)] mt-2">Installer + policy templates (VAP/CEL + Kyverno) + retention profiles + runbooks + policy tests. Gated to keep noise down.</p>
+              <h3 className="text-xl font-semibold md:text-2xl">
+                Compliance Evidence Starter Pack
+              </h3>
+              <p className="mt-2 text-muted-foreground">
+                Installer + policy templates (VAP/CEL + Kyverno) + retention
+                profiles + runbooks + policy tests. Gated to keep noise down.
+              </p>
             </div>
-            <button
-              onClick={() => navigate("/starter-pack")}
-              className="inline-flex items-center gap-2 rounded-full bg-[var(--accent-600)] hover:bg-[var(--accent-700)] text-white px-5 py-2.5 active:translate-y-px"
-            >
-              <Download className="h-4 w-4" /> Get the pack
-            </button>
+            <Button asChild className="mt-4 shrink-0 md:mt-0">
+              <Link to="/starter-pack">
+                <Download className="mr-2 h-4 w-4" /> Get the pack
+              </Link>
+            </Button>
           </div>
-        </div>
+        </Card>
       </Container>
     </motion.section>
   );
 }
 
-export default EvidenceTeaser;
+export { EvidenceTeaser };

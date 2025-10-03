@@ -1,20 +1,27 @@
-import React from 'react';
+import * as React from 'react';
 import { Link } from 'react-router-dom';
 import { Mail } from 'lucide-react';
-import Container from '@/components/ui/Container';
+import { Container } from '@/components/ui/Container';
+import { Button } from '@/components/ui/Button';
 
 function Footer() {
   return (
-    <footer className="border-t border-[var(--divider)] mt-16">
+    <footer className="mt-16 border-t">
       <Container>
-        <div className="py-8 text-sm flex flex-col md:flex-row gap-4 md:gap-8 items-center justify-between">
-          <div className="text-[var(--muted)]">© {new Date().getFullYear()} Week‑to‑Ready by GLPX</div>
+        <div className="flex flex-col items-center justify-between gap-4 py-8 text-sm md:flex-row">
+          <p className="text-muted-foreground">
+            © {new Date().getFullYear()} Week-to-Ready by GLPX
+          </p>
           <div className="flex items-center gap-4">
-            <Link to="/privacy" className="hover:underline">Privacy</Link>
-            <a className="inline-flex items-center gap-1" href="mailto:hi@example.com">
-              <Mail className="h-4 w-4" />
-              hi@example.com
-            </a>
+            <Button variant="link" asChild>
+              <Link to="/privacy">Privacy</Link>
+            </Button>
+            <Button variant="link" asChild>
+              <a href="mailto:hi@example.com">
+                <Mail className="mr-2 h-4 w-4" />
+                hi@example.com
+              </a>
+            </Button>
           </div>
         </div>
       </Container>
@@ -22,4 +29,4 @@ function Footer() {
   );
 }
 
-export default Footer;
+export { Footer };

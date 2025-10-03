@@ -1,38 +1,24 @@
-import React from 'react';
-import clsx from 'clsx';
+import * as React from 'react';
+
+import { cn } from '@/lib/utils';
 
 export interface TextareaProps
-  extends React.TextareaHTMLAttributes<HTMLTextAreaElement> {
-  label: string;
-  id: string;
-}
+  extends React.TextareaHTMLAttributes<HTMLTextAreaElement> {}
 
-/**
- * A multi‑line text area with an associated label. Provides consistent
- * styling and focus management across browsers.
- */
-export const Textarea = React.forwardRef<HTMLTextAreaElement, TextareaProps>(
-  ({ id, label, className, rows = 4, ...props }, ref) => {
+const Textarea = React.forwardRef<HTMLTextAreaElement, TextareaProps>(
+  ({ className, ...props }, ref) => {
     return (
-      <div className="flex flex-col gap-1">
-        <label htmlFor={id} className="text-sm font-medium">
-          {label}
-        </label>
-        <textarea
-          ref={ref}
-          id={id}
-          rows={rows}
-          className={clsx(
-            'rounded-xl border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-700 px-3 py-2 text-sm placeholder-gray-400 dark:placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-primary resize-y',
-            className
-          )}
-          {...props}
-        />
-      </div>
+      <textarea
+        className={cn(
+          'flex min-h-[80px] w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50',
+          className
+        )}
+        ref={ref}
+        {...props}
+      />
     );
   }
 );
-
 Textarea.displayName = 'Textarea';
 
-export default Textarea;
+export { Textarea };

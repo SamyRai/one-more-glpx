@@ -1,38 +1,25 @@
-import React from 'react';
-import clsx from 'clsx';
+import * as React from 'react';
+
+import { cn } from '@/lib/utils';
 
 export interface InputProps
-  extends React.InputHTMLAttributes<HTMLInputElement> {
-  label: string;
-  /** Unique identifier used for the input and its label's htmlFor. */
-  id: string;
-}
+  extends React.InputHTMLAttributes<HTMLInputElement> {}
 
-/**
- * A controlled or uncontrolled input field. Always include a label for
- * accessibility; use `sr-only` class if you want it visually hidden.
- */
-export const Input = React.forwardRef<HTMLInputElement, InputProps>(
-  ({ id, label, className, ...props }, ref) => {
+const Input = React.forwardRef<HTMLInputElement, InputProps>(
+  ({ className, type, ...props }, ref) => {
     return (
-      <div className="flex flex-col gap-1">
-        <label htmlFor={id} className="text-sm font-medium">
-          {label}
-        </label>
-        <input
-          ref={ref}
-          id={id}
-          className={clsx(
-            'rounded-xl border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-700 px-3 py-2 text-sm placeholder-gray-400 dark:placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-primary',
-            className
-          )}
-          {...props}
-        />
-      </div>
+      <input
+        type={type}
+        className={cn(
+          'flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50',
+          className
+        )}
+        ref={ref}
+        {...props}
+      />
     );
   }
 );
-
 Input.displayName = 'Input';
 
-export default Input;
+export { Input };
