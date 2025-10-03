@@ -40,7 +40,7 @@ export const Modal: React.FC<ModalProps> = ({
 
   return (
     <div
-      className="modal-overlay"
+      className="fixed inset-0 z-50 flex items-center justify-center bg-black/50 backdrop-blur-sm"
       onClick={(e) => {
         // click on backdrop closes the modal
         if (e.target === e.currentTarget) onClose();
@@ -51,17 +51,17 @@ export const Modal: React.FC<ModalProps> = ({
         aria-modal="true"
         aria-labelledby={title ? 'modal-title' : undefined}
         aria-describedby={description ? 'modal-description' : undefined}
-        className="modal-content"
+        className="bg-white dark:bg-gray-800 rounded-xl shadow-lg max-w-lg w-full p-6 overflow-y-auto max-h-[90vh]"
       >
         {title && (
-          <h2 id="modal-title" className="modal-title">
+          <h2 id="modal-title" className="text-lg font-semibold mb-2">
             {title}
           </h2>
         )}
         {description && (
           <p
             id="modal-description"
-            className="modal-description"
+            className="text-sm text-gray-600 dark:text-gray-400 mb-4"
           >
             {description}
           </p>
