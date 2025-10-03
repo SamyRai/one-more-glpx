@@ -15,7 +15,7 @@ import { ThemeContext } from '@/hooks/useTheme';
 function applyThemeVars(vars: Record<string, string>) {
   if (typeof document === 'undefined') return;
   const root = document.documentElement;
-  Object.entries(vars).forEach(([k, v]) => root.style.setProperty(k, v));
+  for (const [k, v] of Object.entries(vars)) root.style.setProperty(k, v);
 }
 
 export function ThemeProvider({ children }: ThemeProviderProps) {
@@ -34,7 +34,7 @@ export function ThemeProvider({ children }: ThemeProviderProps) {
     ls.set('theme', { name: theme.name, vars: theme.vars });
     ls.set('mode', mode);
 
-    document.documentElement.setAttribute('data-theme', mode);
+    document.documentElement.dataset.theme = mode;
   }, [theme.name, theme.vars, mode]);
 
   const value = useMemo(

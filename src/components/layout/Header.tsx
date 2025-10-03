@@ -16,15 +16,15 @@ import { Container } from '@/components/ui/Container';
 import { Button } from '@/components/ui/Button';
 import { cn } from '@/lib/utils';
 
+const navLinkClasses = ({ isActive }: { isActive: boolean }) =>
+  cn(
+    'hover:underline',
+    isActive ? 'font-semibold text-primary' : 'text-muted-foreground'
+  );
+
 function Header() {
   const [open, setOpen] = useState(false);
   const { mode, setMode, setOpen: setThemeOpen } = useTheme();
-
-  const navLinkClasses = ({ isActive }: { isActive: boolean }) =>
-    cn(
-      'hover:underline',
-      isActive ? 'font-semibold text-primary' : 'text-muted-foreground'
-    );
 
   const closeMenu = () => setOpen(false);
 

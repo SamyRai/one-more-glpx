@@ -2,6 +2,7 @@ module.exports = {
   preset: 'ts-jest',
   testEnvironment: 'jest-environment-jsdom',
   setupFilesAfterEnv: ['<rootDir>/jest.setup.js'],
+  roots: ['<rootDir>/tests/unit'],
   moduleNameMapper: {
     '^@/(.*)$': '<rootDir>/src/$1',
     '\\.(css|less|scss|sass)$': 'identity-obj-proxy',
@@ -14,4 +15,5 @@ module.exports = {
       tsconfig: 'tsconfig.json',
     },
   },
+  testPathIgnorePatterns: ['/node_modules/', '/tests/e2e/'],
 };

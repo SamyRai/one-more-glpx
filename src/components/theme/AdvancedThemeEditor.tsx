@@ -9,7 +9,7 @@ function AdvancedThemeEditor() {
   const { theme, setTheme } = useTheme();
   const [vars, setVars] = React.useState(theme?.vars || {});
   const [radius, setRadius] = React.useState(
-    parseInt(
+    Number.parseInt(
       (theme?.vars?.['--radius'] || '14').toString().replace('px', '')
     ) || 14
   );
@@ -17,7 +17,7 @@ function AdvancedThemeEditor() {
   React.useEffect(() => {
     setVars(theme?.vars || {});
     setRadius(
-      parseInt(
+      Number.parseInt(
         (theme?.vars?.['--radius'] || '14').toString().replace('px', '')
       ) || 14
     );
@@ -74,7 +74,7 @@ function AdvancedThemeEditor() {
               min="8"
               max="20"
               value={radius}
-              onChange={(e) => setRadius(parseInt(e.target.value))}
+              onChange={(e) => setRadius(Number.parseInt(e.target.value))}
               className="w-full"
             />
             <span className="w-10 text-right text-xs text-muted-foreground">
