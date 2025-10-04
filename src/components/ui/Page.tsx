@@ -26,4 +26,44 @@ const Page = React.forwardRef<
 
 Page.displayName = 'Page';
 
+const PageHeader = React.forwardRef<
+  HTMLDivElement,
+  React.HTMLAttributes<HTMLDivElement>
+>(({ className, ...props }, ref) => (
+  <div
+    ref={ref}
+    className={cn('mb-8 text-center', className)}
+    {...props}
+  />
+));
+PageHeader.displayName = 'PageHeader';
+
+const PageTitle = React.forwardRef<
+  HTMLParagraphElement,
+  React.HTMLAttributes<HTMLHeadingElement>
+>(({ className, ...props }, ref) => (
+  <h1
+    ref={ref}
+    className={cn('text-3xl font-semibold tracking-tight', className)}
+    {...props}
+  />
+));
+PageTitle.displayName = 'PageTitle';
+
+const PageDescription = React.forwardRef<
+  HTMLParagraphElement,
+  React.HTMLAttributes<HTMLParagraphElement>
+>(({ className, ...props }, ref) => (
+  <p
+    ref={ref}
+    className={cn('mt-2 text-muted-foreground', className)}
+    {...props}
+  />
+));
+PageDescription.displayName = 'PageDescription';
+
+Page.Header = PageHeader;
+Page.Title = PageTitle;
+Page.Description = PageDescription;
+
 export { Page };

@@ -44,7 +44,7 @@ function Header() {
               Starter Pack
             </NavLink>
             <NavLink to="/book" className={navLinkClasses}>
-              Book a call
+              Book a free call
             </NavLink>
             <Button
               variant="outline"
@@ -67,13 +67,21 @@ function Header() {
               <span className="sr-only">Toggle theme</span>
             </Button>
             <Button variant="ghost" size="icon" asChild>
-              <a href="https://github.com" target="_blank" rel="noreferrer">
+              <a
+                href="https://github.com/example/project"
+                target="_blank"
+                rel="noreferrer"
+              >
                 <Github className="h-4 w-4" />
                 <span className="sr-only">GitHub</span>
               </a>
             </Button>
             <Button variant="ghost" size="icon" asChild>
-              <a href="https://linkedin.com" target="_blank" rel="noreferrer">
+              <a
+                href="https://linkedin.com/company/example"
+                target="_blank"
+                rel="noreferrer"
+              >
                 <Linkedin className="h-4 w-4" />
                 <span className="sr-only">LinkedIn</span>
               </a>
@@ -81,7 +89,7 @@ function Header() {
             <Button asChild>
               <Link to="/book">
                 <Calendar className="h-4 w-4 mr-2" />
-                Get slot
+                Book a free call
               </Link>
             </Button>
           </nav>
@@ -124,7 +132,7 @@ function Header() {
               </Button>
               <Button variant="ghost" className="justify-start" asChild>
                 <Link to="/book" onClick={closeMenu}>
-                  Book a call
+                  Book a free call
                 </Link>
               </Button>
               <Button
@@ -139,7 +147,7 @@ function Header() {
               </Button>
               <Button variant="ghost" className="justify-start" asChild>
                 <a
-                  href="https://github.com"
+                  href="https://github.com/example/project"
                   target="_blank"
                   rel="noreferrer"
                   onClick={closeMenu}
@@ -149,7 +157,7 @@ function Header() {
               </Button>
               <Button variant="ghost" className="justify-start" asChild>
                 <a
-                  href="https://linkedin.com"
+                  href="https://linkedin.com/company/example"
                   target="_blank"
                   rel="noreferrer"
                   onClick={closeMenu}

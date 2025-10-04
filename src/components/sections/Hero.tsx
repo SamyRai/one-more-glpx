@@ -133,7 +133,7 @@ function Hero() {
               <Button size="lg" variant="outline" asChild>
                 <Link to="/book">
                   <Calendar className="mr-2 h-4 w-4" />
-                  Book a 30-min fit call
+                  Book a free call
                 </Link>
               </Button>
             </motion.div>

@@ -14,13 +14,22 @@ function Footer() {
           </p>
           <div className="flex items-center gap-4">
             <Button variant="link" asChild>
+              <Link to="/posts">Articles</Link>
+            </Button>
+            <Button variant="link" asChild>
+              <Link to="/starter-pack">Starter Pack</Link>
+            </Button>
+            <Button variant="link" asChild>
+              <Link to="/book">Book a free call</Link>
+            </Button>
+            <Button variant="link" asChild>
               <Link to="/privacy">Privacy</Link>
             </Button>
             <Button variant="link" asChild>
-              <a href="mailto:hi@example.com">
+              <Link to="/contact">
                 <Mail className="mr-2 h-4 w-4" />
-                hi@example.com
-              </a>
+                Contact
+              </Link>
             </Button>
           </div>
         </div>
