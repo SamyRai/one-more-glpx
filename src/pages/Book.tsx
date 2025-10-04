@@ -1,24 +1,29 @@
-import React, { useEffect } from 'react';
+import * as React from 'react';
+import { Page } from '@/components/ui/Page';
 import { Container } from '@/components/ui/Container';
+import { BookingForm } from '@/components/sections/BookingForm';
+import { Seo } from '@/components/ui/Seo';
 
 function Book() {
-  useEffect(() => {
-    document.title = "Book a call • Week‑to‑Ready";
-  }, []);
-
   return (
-    <main>
-      <section className="py-16 md:py-24">
-        <Container>
-          <h1 className="text-3xl font-semibold">Book a Baseline Fit call</h1>
-          <p className="mt-2 text-[var(--text)]">30 minutes to confirm fit, scope, and slot dates. Bring one question and one cluster fact.</p>
-          <div className="mt-6 aspect-video w-full ring-1 ring-[var(--ring)] rounded-2xl bg-[var(--bg-soft)] flex items-center justify-center text-[var(--muted-2)]">
-            Calendly embed placeholder
-          </div>
-          <p className="text-xs text-[var(--muted-2)] mt-3">We recommend using a work email for calendar invites.</p>
-        </Container>
-      </section>
-    </main>
+    <Page>
+      <Seo
+        title="Book a call"
+        description="Book a 30-minute call to discuss your Kubernetes security needs and see how we can help you achieve a security baseline in just one week."
+        canonical="/book"
+      />
+      <Container>
+        <Page.Header>
+          <Page.Title>Schedule Your Free Security Consultation</Page.Title>
+          <Page.Description>
+            This free, 30-minute call is a no-pressure opportunity for us to
+            understand your needs, confirm the scope, and reserve your slot.
+            Choose a time that works for you below.
+          </Page.Description>
+        </Page.Header>
+        <BookingForm />
+      </Container>
+    </Page>
   );
 }
 

@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
-import { Link, NavLink } from 'react-router-dom';
+import React, { useState } from "react";
+import { Link, NavLink } from "react-router-dom";
 import {
   ShieldCheck,
   Palette,
@@ -9,17 +9,17 @@ import {
   Linkedin,
   Calendar,
   TerminalSquare,
-} from 'lucide-react';
-import { motion, AnimatePresence } from 'framer-motion';
-import { useTheme } from '@/hooks/useTheme';
-import { Container } from '@/components/ui/Container';
-import { Button } from '@/components/ui/Button';
-import { cn } from '@/lib/utils';
+} from "lucide-react";
+import { motion, AnimatePresence } from "framer-motion";
+import { useTheme } from "@/hooks/useTheme";
+import { Container } from "@/components/ui/Container";
+import { Button } from "@/components/ui/Button";
+import { cn } from "@/lib/utils";
 
 const navLinkClasses = ({ isActive }: { isActive: boolean }) =>
   cn(
-    'hover:underline',
-    isActive ? 'font-semibold text-primary' : 'text-muted-foreground'
+    "hover:underline",
+    isActive ? "font-semibold text-primary" : "text-muted-foreground",
   );
 
 function Header() {
@@ -44,7 +44,7 @@ function Header() {
               Starter Pack
             </NavLink>
             <NavLink to="/book" className={navLinkClasses}>
-              Book a call
+              Book a free call
             </NavLink>
             <Button
               variant="outline"
@@ -57,9 +57,9 @@ function Header() {
             <Button
               variant="outline"
               size="icon"
-              onClick={() => setMode(mode === 'dark' ? 'light' : 'dark')}
+              onClick={() => setMode(mode === "dark" ? "light" : "dark")}
             >
-              {mode === 'dark' ? (
+              {mode === "dark" ? (
                 <Sun className="h-4 w-4" />
               ) : (
                 <Moon className="h-4 w-4" />
@@ -67,13 +67,21 @@ function Header() {
               <span className="sr-only">Toggle theme</span>
             </Button>
             <Button variant="ghost" size="icon" asChild>
-              <a href="https://github.com" target="_blank" rel="noreferrer">
+              <a
+                href="https://github.com/example/project"
+                target="_blank"
+                rel="noreferrer"
+              >
                 <Github className="h-4 w-4" />
                 <span className="sr-only">GitHub</span>
               </a>
             </Button>
             <Button variant="ghost" size="icon" asChild>
-              <a href="https://linkedin.com" target="_blank" rel="noreferrer">
+              <a
+                href="https://linkedin.com/company/example"
+                target="_blank"
+                rel="noreferrer"
+              >
                 <Linkedin className="h-4 w-4" />
                 <span className="sr-only">LinkedIn</span>
               </a>
@@ -81,7 +89,7 @@ function Header() {
             <Button asChild>
               <Link to="/book">
                 <Calendar className="h-4 w-4 mr-2" />
-                Get slot
+                Book a free call
               </Link>
             </Button>
           </nav>
@@ -124,7 +132,7 @@ function Header() {
               </Button>
               <Button variant="ghost" className="justify-start" asChild>
                 <Link to="/book" onClick={closeMenu}>
-                  Book a call
+                  Book a free call
                 </Link>
               </Button>
               <Button
@@ -139,7 +147,7 @@ function Header() {
               </Button>
               <Button variant="ghost" className="justify-start" asChild>
                 <a
-                  href="https://github.com"
+                  href="https://github.com/example/project"
                   target="_blank"
                   rel="noreferrer"
                   onClick={closeMenu}
@@ -149,7 +157,7 @@ function Header() {
               </Button>
               <Button variant="ghost" className="justify-start" asChild>
                 <a
-                  href="https://linkedin.com"
+                  href="https://linkedin.com/company/example"
                   target="_blank"
                   rel="noreferrer"
                   onClick={closeMenu}

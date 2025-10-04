@@ -1,7 +1,10 @@
-import { useMemo } from 'react';
-import { useLocation } from 'react-router-dom';
+import { useMemo } from "react";
+import { useLocation } from "react-router-dom";
 
 export function useUTM() {
   const { search } = useLocation();
-  return useMemo(() => Object.fromEntries(new URLSearchParams(search)), [search]);
+  return useMemo(
+    () => Object.fromEntries(new URLSearchParams(search)),
+    [search],
+  );
 }

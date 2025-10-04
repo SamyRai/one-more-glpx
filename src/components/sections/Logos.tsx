@@ -1,8 +1,8 @@
-import * as React from 'react';
-import { motion, useReducedMotion } from 'framer-motion';
-import { CheckCircle2 } from 'lucide-react';
-import { Container } from '@/components/ui/Container';
-import { technologies } from '@/data/technologies';
+import * as React from "react";
+import { motion, useReducedMotion } from "framer-motion";
+import { CheckCircle2 } from "lucide-react";
+import { Container } from "@/components/ui/Container";
+import { technologies } from "@/data/technologies";
 
 function Logos() {
   const prefersReduced = useReducedMotion();

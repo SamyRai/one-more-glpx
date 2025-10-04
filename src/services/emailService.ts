@@ -10,7 +10,7 @@ export interface ContactPayload {
 }
 
 export async function sendContactMessage(
-  payload: ContactPayload
+  payload: ContactPayload,
 ): Promise<void> {
   // Simulate a network delay
   await new Promise((resolve) => setTimeout(resolve, 800));
@@ -22,5 +22,5 @@ export async function sendContactMessage(
   // });
   // if (!res.ok) throw new Error('Failed to send message');
   // For now we just log to console
-  console.log('Contact payload sent', payload);
+  console.log("Contact payload sent", payload);
 }

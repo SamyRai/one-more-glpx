@@ -1,12 +1,12 @@
-import * as React from 'react';
-import { Link } from 'react-router-dom';
-import { motion, useReducedMotion } from 'framer-motion';
-import { ArrowRight } from 'lucide-react';
-import { usePosts } from '@/hooks/usePosts';
-import { type Post } from '@/types';
-import { Container } from '@/components/ui/Container';
-import { Card } from '@/components/ui/Card';
-import { Button } from '@/components/ui/Button';
+import * as React from "react";
+import { Link } from "react-router-dom";
+import { motion, useReducedMotion } from "framer-motion";
+import { ArrowRight } from "lucide-react";
+import { usePosts } from "@/hooks/usePosts";
+import { type Post } from "@/types";
+import { Container } from "@/components/ui/Container";
+import { Card } from "@/components/ui/Card";
+import { Button } from "@/components/ui/Button";
 
 function ArticleItem({ post }: { post: Post }) {
   const itemVariants = {
@@ -25,9 +25,7 @@ function ArticleItem({ post }: { post: Post }) {
             <h3 className="mt-1 font-medium group-hover:underline">
               {post.title}
             </h3>
-            <p className="mt-1 text-sm text-muted-foreground">
-              {post.excerpt}
-            </p>
+            <p className="mt-1 text-sm text-muted-foreground">{post.excerpt}</p>
           </div>
           <ArrowRight className="h-4 w-4 text-muted-foreground transition-colors group-hover:text-primary" />
         </div>

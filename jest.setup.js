@@ -1,10 +1,10 @@
-require('@testing-library/jest-dom');
-const React = require('react');
+require("@testing-library/jest-dom");
+const React = require("react");
 
 // Mocking window.matchMedia for Jest
-Object.defineProperty(window, 'matchMedia', {
+Object.defineProperty(window, "matchMedia", {
   writable: true,
-  value: jest.fn().mockImplementation(query => ({
+  value: jest.fn().mockImplementation((query) => ({
     matches: false,
     media: query,
     onchange: null,
@@ -29,8 +29,8 @@ window.IntersectionObserver = mockIntersectionObserver;
 
 // A more robust mock for framer-motion that handles all motion components
 // and filters out invalid props before passing them to the DOM.
-jest.mock('framer-motion', () => {
-  const framer = jest.requireActual('framer-motion');
+jest.mock("framer-motion", () => {
+  const framer = jest.requireActual("framer-motion");
 
   const motionComponent = (Component) => {
     const FramerComponent = React.forwardRef(({ children, ...props }, ref) => {
@@ -55,7 +55,7 @@ jest.mock('framer-motion', () => {
 
   const motion = new Proxy(framer.motion, {
     get: (target, key) => {
-      if (typeof key === 'string') {
+      if (typeof key === "string") {
         return motionComponent(key);
       }
       return target[key];
@@ -64,7 +64,8 @@ jest.mock('framer-motion', () => {
 
   return {
     ...framer,
-    AnimatePresence: ({ children }) => React.createElement(React.Fragment, {}, children),
+    AnimatePresence: ({ children }) =>
+      React.createElement(React.Fragment, {}, children),
     motion: motion,
     useReducedMotion: () => true,
   };

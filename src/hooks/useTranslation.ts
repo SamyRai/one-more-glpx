@@ -1,6 +1,6 @@
-import { createContext, useContext } from 'react';
+import { createContext, useContext } from "react";
 
-export type Locale = 'en' | 'de';
+export type Locale = "en" | "de";
 
 interface TranslationContextType {
   locale: Locale;
@@ -15,7 +15,7 @@ export const TranslationContext = createContext<
 export function useTranslation() {
   const context = useContext(TranslationContext);
   if (context === undefined) {
-    throw new Error('useTranslation must be used within a TranslationProvider');
+    throw new Error("useTranslation must be used within a TranslationProvider");
   }
   return context;
 }
