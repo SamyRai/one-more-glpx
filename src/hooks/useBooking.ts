@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { availability, Availability } from '@/data/availability';
+import { availability } from '@/data/availability';
 
 export type BookingState = {
   date: Date | null;
@@ -7,6 +7,17 @@ export type BookingState = {
   name: string;
   email: string;
   notes: string;
+};
+
+export const getAvailableTimes = (date: Date | null): string[] => {
+  if (!date) return [];
+  const dateString = date.toISOString().split('T')[0];
+  return availability[dateString] || [];
+};
+
+export const isDateAvailable = (date: Date): boolean => {
+  const dateString = date.toISOString().split('T')[0];
+  return Object.keys(availability).includes(dateString);
 };
 
 export function useBooking() {
@@ -27,21 +38,10 @@ export function useBooking() {
   };
 
   const handleInputChange = (
-    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
   ) => {
     const { name, value } = e.target;
     setBooking((prev) => ({ ...prev, [name]: value }));
-  };
-
-  const getAvailableTimes = (date: Date | null): string[] => {
-    if (!date) return [];
-    const dateString = date.toISOString().split('T')[0];
-    return availability[dateString] || [];
-  };
-
-  const isDateAvailable = (date: Date): boolean => {
-    const dateString = date.toISOString().split('T')[0];
-    return Object.keys(availability).includes(dateString);
   };
 
   const submitBooking = () => {
@@ -55,8 +55,6 @@ export function useBooking() {
     setDate,
     setTime,
     handleInputChange,
-    getAvailableTimes,
-    isDateAvailable,
     submitBooking,
   };
 }

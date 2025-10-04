@@ -1,23 +1,20 @@
 import * as React from 'react';
-import { useBooking } from '@/hooks/useBooking';
+import {
+  useBooking,
+  getAvailableTimes,
+  isDateAvailable,
+} from '@/hooks/useBooking';
 import { Calendar } from '@/components/ui/Calendar';
-import { TimeSlot } from '@/components/ui/TimeSlot';
-import { Input } from '@/components/ui/Input';
-import { Textarea } from '@/components/ui/Textarea';
-import { Button } from '@/components/ui/Button';
-import { Label } from '@/components/ui/Label';
-import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/Card';
+import { TimeSlot } from "@/components/ui/TimeSlot";
+import { Input } from "@/components/ui/Input";
+import { Textarea } from "@/components/ui/Textarea";
+import { Button } from "@/components/ui/Button";
+import { Label } from "@/components/ui/Label";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/Card";
 
 function BookingForm() {
-  const {
-    booking,
-    setDate,
-    setTime,
-    handleInputChange,
-    getAvailableTimes,
-    isDateAvailable,
-    submitBooking,
-  } = useBooking();
+  const { booking, setDate, setTime, handleInputChange, submitBooking } =
+    useBooking();
 
   const availableTimes = getAvailableTimes(booking.date);
 

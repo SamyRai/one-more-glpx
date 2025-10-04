@@ -1,53 +1,57 @@
-import React, { useEffect, useState } from 'react';
-import { Link } from 'react-router-dom';
-import { Download, Calendar, ArrowRight } from 'lucide-react';
-import { useUTM } from '@/hooks/useUTM';
-import { ls, trackEvent } from '@/lib/localStorage';
-import { Page } from '@/components/ui/Page';
-import { Container } from '@/components/ui/Container';
-import { Button } from '@/components/ui/Button';
-import { Input } from '@/components/ui/Input';
+import React, { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
+import { setMetaDescription } from "@/lib/meta";
+import { Download, Calendar, ArrowRight } from "lucide-react";
+import { useUTM } from "@/hooks/useUTM";
+import { ls, trackEvent } from "@/lib/localStorage";
+import { Page } from "@/components/ui/Page";
+import { Container } from "@/components/ui/Container";
+import { Button } from "@/components/ui/Button";
+import { Input } from "@/components/ui/Input";
 import {
   Select,
   SelectContent,
   SelectItem,
   SelectTrigger,
   SelectValue,
-} from '@/components/ui/Select';
-import { Label } from '@/components/ui/Label';
-import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/Card';
+} from "@/components/ui/Select";
+import { Label } from "@/components/ui/Label";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/Card";
 
 function StarterPack() {
   const utm = useUTM();
   const [form, setForm] = useState({
-    email: '',
-    role: '',
-    org: '',
-    infra: '',
-    regime: '',
-    timeline: '',
+    email: "",
+    role: "",
+    org: "",
+    infra: "",
+    regime: "",
+    timeline: "",
   });
   const [unlocked, setUnlocked] = useState(
-    ls.get('starter_pack_unlocked', false)
+    ls.get("starter_pack_unlocked", false),
   );
 
   useEffect(() => {
-    document.title = 'Starter Pack • Week‑to‑Ready';
+    document.title = "Starter Pack • Week‑to‑Ready";
+    setMetaDescription(
+      "Get our Compliance Evidence Starter Pack: CEL policies, Kyverno defaults, log/retention templates, runbooks, and a policy test suite.",
+    );
     if (Object.keys(utm).length > 0) {
-      ls.set('last_utm', utm);
+      ls.set("last_utm", utm);
     }
   }, [utm]);
 
   function submit(e: React.FormEvent) {
     e.preventDefault();
-    if (!form.email.includes('@')) {
-      alert('Enter a valid work email');
+    if (!form.email.includes("@")) {
+      alert("Enter a valid work email");
       return;
     }
-    trackEvent('starter_pack_requested', { form, utm });
-    ls.set('lead', { ...form, utm, created_at: new Date().toISOString() });
+    trackEvent("starter_pack_requested", { form, utm });
+    ls.set("lead", { ...form, utm, created_at: new Date().toISOString() });
     setUnlocked(true);
-    ls.set('starter_pack_unlocked', true);
+    ls.set("starter_pack_unlocked", true);
   }
 
   return (
@@ -73,7 +77,7 @@ function StarterPack() {
                   </CardTitle>
                 </div>
                 <Button
-                  onClick={() => trackEvent('pack_download_clicked')}
+                  onClick={() => trackEvent("pack_download_clicked")}
                   size="sm"
                 >
                   Download .zip

@@ -1,8 +1,8 @@
-import * as React from 'react';
-import { Link } from 'react-router-dom';
-import { Mail } from 'lucide-react';
-import { Container } from '@/components/ui/Container';
-import { Button } from '@/components/ui/Button';
+import * as React from "react";
+import { Link } from "react-router-dom";
+import { Mail } from "lucide-react";
+import { Container } from "@/components/ui/Container";
+import { Button } from "@/components/ui/Button";
 
 function Footer() {
   return (

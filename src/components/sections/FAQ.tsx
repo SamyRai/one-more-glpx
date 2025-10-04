@@ -1,13 +1,8 @@
-import * as React from 'react';
-import { Section } from '@/components/ui/Section';
-import { Container } from '@/components/ui/Container';
-import {
-  Card,
-  CardContent,
-  CardHeader,
-  CardTitle,
-} from '@/components/ui/Card';
-import { faqs } from '@/data/faq';
+import * as React from "react";
+import { Section } from "@/components/ui/Section";
+import { Container } from "@/components/ui/Container";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/Card";
+import { faqs } from "@/data/faq";
 
 function FAQ() {
   return (

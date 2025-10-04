@@ -17,7 +17,7 @@ export interface ThemePreset {
   vars: Record<string, string>;
 }
 
-export type ThemeMode = 'light' | 'dark';
+export type ThemeMode = "light" | "dark";
 
 export interface ThemeContextType {
   theme: Theme;

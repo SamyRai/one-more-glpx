@@ -1,6 +1,5 @@
-import * as React from 'react';
-import { cn } from '@/lib/utils';
-import { Button } from '@/components/ui/Button';
+import * as React from "react";
+import { Button } from "@/components/ui/Button";
 
 interface TimeSlotProps {
   availableTimes: string[];
@@ -26,7 +25,7 @@ function TimeSlot({
       {availableTimes.map((time) => (
         <Button
           key={time}
-          variant={selectedTime === time ? 'default' : 'outline'}
+          variant={selectedTime === time ? "default" : "outline"}
           onClick={() => onTimeSelect(time)}
           className="w-full"
         >

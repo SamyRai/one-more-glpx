@@ -1,6 +1,6 @@
-import * as React from 'react';
-import { Palette } from 'lucide-react';
-import { useTheme } from '@/hooks/useTheme';
+import * as React from "react";
+import { Palette } from "lucide-react";
+import { useTheme } from "@/hooks/useTheme";
 import {
   Modal,
   ModalContent,
@@ -8,19 +8,13 @@ import {
   ModalTitle,
   ModalDescription,
   ModalClose,
-} from '@/components/ui/Modal';
-import { Button } from '@/components/ui/Button';
-import { Card } from '@/components/ui/Card';
-import AdvancedThemeEditor from './AdvancedThemeEditor';
+} from "@/components/ui/Modal";
+import { Button } from "@/components/ui/Button";
+import { Card } from "@/components/ui/Card";
+import AdvancedThemeEditor from "./AdvancedThemeEditor";
 
 function ThemeModal() {
-  const {
-    open,
-    setOpen,
-    setTheme,
-    theme: currentTheme,
-    presets,
-  } = useTheme();
+  const { open, setOpen, setTheme, theme: currentTheme, presets } = useTheme();
 
   return (
     <Modal open={open} onOpenChange={setOpen}>
@@ -44,7 +38,7 @@ function ThemeModal() {
                 setOpen(false);
               }}
               className={`cursor-pointer p-3 text-left hover:bg-muted ${
-                currentTheme?.name === p.name ? 'ring-2 ring-primary' : ''
+                currentTheme?.name === p.name ? "ring-2 ring-primary" : ""
               }`}
             >
               <div className="font-medium">{p.name}</div>

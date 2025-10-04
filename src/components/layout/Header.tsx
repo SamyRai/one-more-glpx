@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
-import { Link, NavLink } from 'react-router-dom';
+import React, { useState } from "react";
+import { Link, NavLink } from "react-router-dom";
 import {
   ShieldCheck,
   Palette,
@@ -9,17 +9,17 @@ import {
   Linkedin,
   Calendar,
   TerminalSquare,
-} from 'lucide-react';
-import { motion, AnimatePresence } from 'framer-motion';
-import { useTheme } from '@/hooks/useTheme';
-import { Container } from '@/components/ui/Container';
-import { Button } from '@/components/ui/Button';
-import { cn } from '@/lib/utils';
+} from "lucide-react";
+import { motion, AnimatePresence } from "framer-motion";
+import { useTheme } from "@/hooks/useTheme";
+import { Container } from "@/components/ui/Container";
+import { Button } from "@/components/ui/Button";
+import { cn } from "@/lib/utils";
 
 const navLinkClasses = ({ isActive }: { isActive: boolean }) =>
   cn(
-    'hover:underline',
-    isActive ? 'font-semibold text-primary' : 'text-muted-foreground'
+    "hover:underline",
+    isActive ? "font-semibold text-primary" : "text-muted-foreground",
   );
 
 function Header() {
@@ -57,9 +57,9 @@ function Header() {
             <Button
               variant="outline"
               size="icon"
-              onClick={() => setMode(mode === 'dark' ? 'light' : 'dark')}
+              onClick={() => setMode(mode === "dark" ? "light" : "dark")}
             >
-              {mode === 'dark' ? (
+              {mode === "dark" ? (
                 <Sun className="h-4 w-4" />
               ) : (
                 <Moon className="h-4 w-4" />

@@ -10,5 +10,5 @@ export interface AnalyticsEvent {
 }
 
 export function trackEvent(event: AnalyticsEvent): void {
-  console.log('Analytics event:', event);
+  console.log("Analytics event:", event);
 }

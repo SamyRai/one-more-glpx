@@ -1,10 +1,10 @@
-import * as React from 'react';
-import { Link } from 'react-router-dom';
-import { motion, useReducedMotion } from 'framer-motion';
-import { Download } from 'lucide-react';
-import { Container } from '@/components/ui/Container';
-import { Card } from '@/components/ui/Card';
-import { Button } from '@/components/ui/Button';
+import * as React from "react";
+import { Link } from "react-router-dom";
+import { motion, useReducedMotion } from "framer-motion";
+import { Download } from "lucide-react";
+import { Container } from "@/components/ui/Container";
+import { Card } from "@/components/ui/Card";
+import { Button } from "@/components/ui/Button";
 
 function EvidenceTeaser() {
   const prefersReduced = useReducedMotion();

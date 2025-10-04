@@ -1,6 +1,6 @@
-import * as React from 'react';
-import { Link } from 'react-router-dom';
-import { motion, useReducedMotion } from 'framer-motion';
+import * as React from "react";
+import { Link } from "react-router-dom";
+import { motion, useReducedMotion } from "framer-motion";
 import {
   CheckCircle2,
   Download,
@@ -9,18 +9,13 @@ import {
   Lock,
   ShieldCheck,
   Server,
-} from 'lucide-react';
-import { Container } from '@/components/ui/Container';
-import { Button } from '@/components/ui/Button';
-import { badgeVariants } from '@/components/ui/Badge';
-import {
-  Card,
-  CardContent,
-  CardHeader,
-  CardTitle,
-} from '@/components/ui/Card';
-import { useTranslation } from '@/hooks/useTranslation';
-import { cn } from '@/lib/utils';
+} from "lucide-react";
+import { Container } from "@/components/ui/Container";
+import { Button } from "@/components/ui/Button";
+import { badgeVariants } from "@/components/ui/Badge";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/Card";
+import { useTranslation } from "@/hooks/useTranslation";
+import { cn } from "@/lib/utils";
 
 interface ProofPointProps {
   title: string;
@@ -52,24 +47,28 @@ function Hero() {
 
   const proofPoints: ProofPointProps[] = [
     {
-      title: 'TLS correctly terminated',
+      title: "TLS correctly terminated",
       icon: <Lock className="h-5 w-5" />,
-      items: ['Gateway API Terminate', 'mTLS passthrough option', 'Cert rotation checks'],
+      items: [
+        "Gateway API Terminate",
+        "mTLS passthrough option",
+        "Cert rotation checks",
+      ],
     },
     {
-      title: 'Admission guardrails',
+      title: "Admission guardrails",
       icon: <ShieldCheck className="h-5 w-5" />,
-      items: ['VAP/CEL invariants', 'Kyverno defaults', 'No dueling webhooks'],
+      items: ["VAP/CEL invariants", "Kyverno defaults", "No dueling webhooks"],
     },
     {
-      title: 'Runtime & secrets',
+      title: "Runtime & secrets",
       icon: <Server className="h-5 w-5" />,
-      items: ['Falco eBPF minimal', 'KMS v2/Vault', 'RBAC review'],
+      items: ["Falco eBPF minimal", "KMS v2/Vault", "RBAC review"],
     },
     {
-      title: 'Evidence',
+      title: "Evidence",
       icon: <FileText className="h-5 w-5" />,
-      items: ['Before/after tests', 'Retention templates', 'Runbooks'],
+      items: ["Before/after tests", "Retention templates", "Runbooks"],
     },
   ];
 
@@ -81,8 +80,16 @@ function Hero() {
       transition={{ duration: prefersReduced ? 0 : 0.35 }}
       className="relative overflow-hidden py-24 md:py-32"
     >
-      <div className="pointer-events-none absolute -right-24 -top-24 h-72 w-72 rounded-full bg-primary/10 opacity-40 blur-3xl" />
-      <div className="pointer-events-none absolute -bottom-24 -left-24 h-80 w-80 rounded-full bg-secondary/10 opacity-40 blur-3xl" />
+      <div
+        role="presentation"
+        aria-hidden="true"
+        className="pointer-events-none absolute -right-24 -top-24 h-72 w-72 rounded-full bg-primary/10 opacity-40 blur-3xl"
+      />
+      <div
+        role="presentation"
+        aria-hidden="true"
+        className="pointer-events-none absolute -bottom-24 -left-24 h-80 w-80 rounded-full bg-secondary/10 opacity-40 blur-3xl"
+      />
       <Container>
         <div className="grid grid-cols-1 items-center gap-12 md:grid-cols-12">
           <div className="md:col-span-6">
@@ -91,10 +98,10 @@ function Hero() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: prefersReduced ? 0 : 0.32, delay: 0.02 }}
-              className={cn(badgeVariants({ variant: 'outline' }), 'mb-4')}
+              className={cn(badgeVariants({ variant: "outline" }), "mb-4")}
             >
-              <CheckCircle2 className="mr-2 h-4 w-4 text-primary" />
-              5 working days to baseline
+              <CheckCircle2 className="mr-2 h-4 w-4 text-primary" />5 working
+              days to baseline
             </motion.div>
             <motion.h1
               initial={{ opacity: 0, y: 10 }}
@@ -103,7 +110,7 @@ function Hero() {
               transition={{ duration: prefersReduced ? 0 : 0.38, delay: 0.06 }}
               className="text-3xl font-semibold leading-tight tracking-tight md:text-5xl"
             >
-              {t('hero.title')}
+              {t("hero.title")}
             </motion.h1>
             <motion.p
               initial={{ opacity: 0, y: 10 }}
