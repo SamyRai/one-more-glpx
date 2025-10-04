@@ -1,24 +1,19 @@
-import React, { useState, useCallback, createContext } from 'react';
-
-export type Locale = 'en' | 'de';
+import React, { useState, useCallback } from 'react';
+import { TranslationContext, Locale } from '@/hooks/useTranslation';
 
 type TranslationDictionary = Record<string, string>;
 
-// English translation strings
 const en: TranslationDictionary = {
-  // General
   'nav.home': 'Home',
   'nav.features': 'Features',
   'nav.pricing': 'Pricing',
   'nav.contact': 'Contact',
   'button.bookCall': 'Book a 30‑min fit call',
   'button.downloadPack': 'Download baseline pack',
-  // Hero
   'hero.title':
     'Kubernetes security baseline in one week — with auditor‑ready evidence.',
   'hero.subtitle':
     'Gateway API TLS, VAP/CEL policies, Kyverno, Falco, KMS, PCI DSS, DORA & NIS2. All configured and documented.',
-  // Features
   'features.title': 'What’s included',
   'features.gateway': 'Gateway API TLS & routing',
   'features.admission': 'Admission control (VAP/CEL, Kyverno)',
@@ -26,7 +21,6 @@ const en: TranslationDictionary = {
   'features.secrets': 'Secrets management (KMS/Vault)',
   'features.compliance': 'PCI, DORA & NIS2 evidence pack',
   'features.pricing': 'Fixed scope. Typical price €7.5–9.5k.',
-  // Contact
   'contact.title': 'Get in touch',
   'contact.nameLabel': 'Name',
   'contact.emailLabel': 'Email address',
@@ -36,7 +30,6 @@ const en: TranslationDictionary = {
   'contact.error': 'There was an error sending your message. Please try again.',
 };
 
-// German translation strings
 const de: TranslationDictionary = {
   'nav.home': 'Startseite',
   'nav.features': 'Funktionen',
@@ -66,16 +59,6 @@ const de: TranslationDictionary = {
 };
 
 const dictionaries: Record<Locale, TranslationDictionary> = { en, de };
-
-interface TranslationContextType {
-  locale: Locale;
-  setLocale: (locale: Locale) => void;
-  t: (key: string) => string;
-}
-
-export const TranslationContext = createContext<
-  TranslationContextType | undefined
->(undefined);
 
 export const TranslationProvider: React.FC<{ children: React.ReactNode }> = ({
   children,

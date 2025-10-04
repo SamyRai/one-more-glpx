@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import Container from '@/components/ui/Container';
+import { Container } from '@/components/ui/Container';
 
 function Book() {
   useEffect(() => {

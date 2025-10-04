@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { Download, ArrowRight } from 'lucide-react';
 import { usePosts } from '@/hooks/usePosts';
-import Container from '@/components/ui/Container';
+import { Container } from '@/components/ui/Container';
 
 function Posts() {
   useEffect(() => { document.title = "Articles • Week‑to‑Ready"; }, []);

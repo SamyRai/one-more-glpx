@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import { Routes, Route, useLocation } from 'react-router-dom';
-import { AnimatePresence, useReducedMotion } from 'framer-motion';
+import { AnimatePresence } from 'framer-motion';
 import Home from '@/pages/Home';
 import Posts from '@/pages/Posts';
 import Post from '@/pages/Post';
@@ -12,7 +12,6 @@ import { Page } from '@/components/ui/Page';
 
 function AnimatedRoutes() {
   const location = useLocation();
-  const prefers = useReducedMotion();
 
   useEffect(() => {
     window.scrollTo(0, 0);

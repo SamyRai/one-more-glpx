@@ -1,25 +1,21 @@
 import React, {
-  createContext,
   useState,
   useEffect,
   useMemo,
-  useContext,
 } from 'react';
 import { ls } from '@/lib/localStorage';
 import { THEME_PRESETS, NEUTRALS } from '@/styles/theme';
 import {
-  ThemeContextType,
   Theme,
   ThemeProviderProps,
   ThemeMode,
 } from '@/types';
-
-const ThemeContext = createContext<ThemeContextType | null>(null);
+import { ThemeContext } from '@/hooks/useTheme';
 
 function applyThemeVars(vars: Record<string, string>) {
   if (typeof document === 'undefined') return;
   const root = document.documentElement;
-  Object.entries(vars).forEach(([k, v]) => root.style.setProperty(k, v));
+  for (const [k, v] of Object.entries(vars)) root.style.setProperty(k, v);
 }
 
 export function ThemeProvider({ children }: ThemeProviderProps) {
@@ -31,17 +27,15 @@ export function ThemeProvider({ children }: ThemeProviderProps) {
   const [open, setOpen] = useState(false);
   const [mode, setMode] = useState<ThemeMode>(ls.get('mode', 'light'));
 
-  // Apply theme variables and save to localStorage when theme or mode changes.
   useEffect(() => {
     const radius = theme?.vars?.['--radius'] || '14px';
     applyThemeVars({ ...NEUTRALS[mode], ...theme.vars, '--radius': radius });
 
-    // Store only serializable parts of the theme
     ls.set('theme', { name: theme.name, vars: theme.vars });
     ls.set('mode', mode);
 
-    document.documentElement.setAttribute('data-theme', mode);
-  }, [theme.name, theme.vars, mode]); // Depend on serializable parts
+    document.documentElement.dataset.theme = mode;
+  }, [theme.name, theme.vars, mode]);
 
   const value = useMemo(
     () => ({
@@ -59,12 +53,4 @@ export function ThemeProvider({ children }: ThemeProviderProps) {
   return (
     <ThemeContext.Provider value={value}>{children}</ThemeContext.Provider>
   );
-}
-
-export function useTheme() {
-  const context = useContext(ThemeContext);
-  if (!context) {
-    throw new Error('useTheme must be used within a ThemeProvider');
-  }
-  return context;
 }

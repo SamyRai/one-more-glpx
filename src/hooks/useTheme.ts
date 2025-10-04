@@ -1,10 +1,8 @@
-import { useContext } from 'react';
-import { ThemeContext } from '@/contexts/ThemeContext';
+import { createContext, useContext } from 'react';
+import { ThemeContextType } from '@/types';
 
-/**
- * Hook for accessing the current theme and toggling it. Must be used within
- * a `ThemeProvider`.
- */
+export const ThemeContext = createContext<ThemeContextType | null>(null);
+
 export function useTheme() {
   const context = useContext(ThemeContext);
   if (!context) {

@@ -35,10 +35,10 @@ export function useForm<T extends Record<string, unknown>>({
       schema.parse(values);
       setErrors({});
       return true;
-    } catch (err) {
-      if (err instanceof ZodError) {
+    } catch (error) {
+      if (error instanceof ZodError) {
         const fieldErrors: Partial<Record<keyof T, string>> = {};
-        for (const issue of err.issues) {
+        for (const issue of error.issues) {
           const path = issue.path[0] as keyof T;
           fieldErrors[path] = issue.message;
         }

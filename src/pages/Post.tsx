@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import { useParams, useNavigate, Link } from 'react-router-dom';
 import { POSTS } from '@/data/posts';
-import Container from '@/components/ui/Container';
+import { Container } from '@/components/ui/Container';
 import { Download, Calendar } from 'lucide-react';
 
 function Post() {

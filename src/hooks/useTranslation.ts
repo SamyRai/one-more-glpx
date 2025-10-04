@@ -1,14 +1,21 @@
-import { useContext } from 'react';
-import { TranslationContext } from '@/contexts/TranslationContext';
+import { createContext, useContext } from 'react';
 
-/**
- * Hook for consuming translations. Returns translation function and current
- * locale as well as a setter.
- */
+export type Locale = 'en' | 'de';
+
+interface TranslationContextType {
+  locale: Locale;
+  setLocale: (locale: Locale) => void;
+  t: (key: string) => string;
+}
+
+export const TranslationContext = createContext<
+  TranslationContextType | undefined
+>(undefined);
+
 export function useTranslation() {
   const context = useContext(TranslationContext);
-  if (!context) {
-    throw new Error('useTranslation must be used within TranslationProvider');
+  if (context === undefined) {
+    throw new Error('useTranslation must be used within a TranslationProvider');
   }
   return context;
 }
