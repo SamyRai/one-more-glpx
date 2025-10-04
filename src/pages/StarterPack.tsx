@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
-import { Download, Calendar, ArrowRight } from 'lucide-react';
+import { Download, Calendar } from 'lucide-react';
 import { useUTM } from "@/hooks/useUTM";
 import { ls, trackEvent } from "@/lib/localStorage";
 import { Page } from "@/components/ui/Page";
@@ -18,9 +18,22 @@ import { Label } from '@/components/ui/Label';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/Card';
 import { Seo } from '@/components/ui/Seo';
 
+import { z } from 'zod';
+
+const leadSchema = z.object({
+  email: z.string().email({ message: 'A valid work email is required' }),
+  role: z.string().optional(),
+  org: z.string().optional(),
+  infra: z.string().optional(),
+  regime: z.string().optional(),
+  timeline: z.string().optional(),
+});
+
+type LeadSchema = z.infer<typeof leadSchema>;
+
 function StarterPack() {
   const utm = useUTM();
-  const [form, setForm] = useState({
+  const [form, setForm] = useState<LeadSchema>({
     email: '',
     role: '',
     org: '',
@@ -28,6 +41,9 @@ function StarterPack() {
     regime: '',
     timeline: '',
   });
+  const [errors, setErrors] = useState<z.ZodError['formErrors']['fieldErrors']>(
+    {},
+  );
   const [unlocked, setUnlocked] = useState(
     ls.get('starter_pack_unlocked', false),
   );
@@ -40,14 +56,16 @@ function StarterPack() {
 
   function submit(e: React.FormEvent) {
     e.preventDefault();
-    if (!form.email.includes("@")) {
-      alert("Enter a valid work email");
+    const result = leadSchema.safeParse(form);
+    if (!result.success) {
+      setErrors(result.error.formErrors.fieldErrors);
       return;
     }
-    trackEvent("starter_pack_requested", { form, utm });
-    ls.set("lead", { ...form, utm, created_at: new Date().toISOString() });
+
+    trackEvent('starter_pack_requested', { form, utm });
+    ls.set('lead', { ...form, utm, created_at: new Date().toISOString() });
     setUnlocked(true);
-    ls.set("starter_pack_unlocked", true);
+    ls.set('starter_pack_unlocked', true);
   }
 
   return (
@@ -96,14 +114,12 @@ function StarterPack() {
               </CardHeader>
               <CardContent>
                 <p className="text-sm text-muted-foreground">
-                  Pick a 30-min slot to confirm scope and dates.
+                  Ready to talk? Pick a 30-min slot to confirm scope and dates.
                 </p>
-                <div className="mt-4 flex aspect-video w-full items-center justify-center rounded-lg border bg-muted/20 text-muted-foreground">
-                  <span>Calendly embed placeholder</span>
-                </div>
-                <Button variant="link" className="px-0" asChild>
-                  <Link to="/book" className="mt-3">
-                    Open booking page <ArrowRight className="ml-2 h-4 w-4" />
+                <Button className="mt-4 w-full" size="lg" asChild>
+                  <Link to="/book">
+                    <Calendar className="mr-2 h-4 w-4" />
+                    Book Your Call
                   </Link>
                 </Button>
               </CardContent>
@@ -121,9 +137,22 @@ function StarterPack() {
                 type="email"
                 placeholder="Work email"
                 value={form.email}
-                onChange={(e) => setForm({ ...form, email: e.target.value })}
+                onChange={(e) => {
+                  setForm({ ...form, email: e.target.value });
+                  if (errors.email) {
+                    setErrors({ ...errors, email: undefined });
+                  }
+                }}
                 required
+                aria-required="true"
+                aria-invalid={!!errors.email}
+                aria-describedby="email-error"
               />
+              {errors.email && (
+                <p id="email-error" className="mt-1 text-sm text-destructive">
+                  {errors.email[0]}
+                </p>
+              )}
             </div>
             <div>
               <Label htmlFor="role">Role</Label>

@@ -119,10 +119,9 @@ function Hero() {
               transition={{ duration: prefersReduced ? 0 : 0.38, delay: 0.12 }}
               className="mt-4 text-muted-foreground"
             >
-              Gateway API TLS configured correctly, admission policies live
-              (VAP/CEL + Kyverno where needed), secrets at rest, minimal Falco
-              eBPF alerts, and logging/retention templates that map to
-              PCI/DORA/NIS2.
+              Achieve a compliant, auditor-ready Kubernetes security baseline.
+              We deliver correctly configured TLS, admission policies, runtime
+              security, and logging/retention templates for PCI, DORA, and NIS2.
             </motion.p>
             <motion.div
               initial={{ opacity: 0, y: 10 }}
@@ -140,7 +139,7 @@ function Hero() {
               <Button size="lg" variant="outline" asChild>
                 <Link to="/book">
                   <Calendar className="mr-2 h-4 w-4" />
-                  Book a free call
+                  Book a Free Fit Call
                 </Link>
               </Button>
             </motion.div>

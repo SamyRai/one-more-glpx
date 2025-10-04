@@ -14,10 +14,11 @@ function Book() {
       />
       <Container>
         <Page.Header>
-          <Page.Title>Book a Baseline Fit call</Page.Title>
+          <Page.Title>Schedule Your Free Security Consultation</Page.Title>
           <Page.Description>
-            30 minutes to confirm fit, scope, and slot dates. Select a date and
-            time that works for you.
+            This free, 30-minute call is a no-pressure opportunity for us to
+            understand your needs, confirm the scope, and reserve your slot.
+            Choose a time that works for you below.
           </Page.Description>
         </Page.Header>
         <BookingForm />
