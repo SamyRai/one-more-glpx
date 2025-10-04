@@ -1,83 +1,196 @@
-import React, { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
-import { Download, Calendar, ArrowRight } from "lucide-react";
-import { useUTM } from "@/hooks/useUTM";
-import { ls, trackEvent } from "@/lib/localStorage";
-import { Container } from "@/components/ui/Container";
+import React, { useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
+import { Download, Calendar, ArrowRight } from 'lucide-react';
+import { useUTM } from '@/hooks/useUTM';
+import { ls, trackEvent } from '@/lib/localStorage';
+import { Page } from '@/components/ui/Page';
+import { Container } from '@/components/ui/Container';
+import { Button } from '@/components/ui/Button';
+import { Input } from '@/components/ui/Input';
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from '@/components/ui/Select';
+import { Label } from '@/components/ui/Label';
+import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/Card';
 
 function StarterPack() {
   const utm = useUTM();
-  const [form, setForm] = useState({ email: "", role: "", org: "", infra: "", regime: "", timeline: "" });
-  const [unlocked, setUnlocked] = useState(ls.get("starter_pack_unlocked", false));
+  const [form, setForm] = useState({
+    email: '',
+    role: '',
+    org: '',
+    infra: '',
+    regime: '',
+    timeline: '',
+  });
+  const [unlocked, setUnlocked] = useState(
+    ls.get('starter_pack_unlocked', false)
+  );
 
   useEffect(() => {
-    document.title = "Starter Pack • Week‑to‑Ready";
+    document.title = 'Starter Pack • Week‑to‑Ready';
     if (Object.keys(utm).length > 0) {
-      ls.set("last_utm", utm);
+      ls.set('last_utm', utm);
     }
   }, [utm]);
 
   function submit(e: React.FormEvent) {
     e.preventDefault();
-    if (!form.email.includes("@")) {
-      alert("Enter a valid work email");
+    if (!form.email.includes('@')) {
+      alert('Enter a valid work email');
       return;
     }
-    trackEvent("starter_pack_requested", { form, utm });
-    ls.set("lead", { ...form, utm, created_at: new Date().toISOString() });
+    trackEvent('starter_pack_requested', { form, utm });
+    ls.set('lead', { ...form, utm, created_at: new Date().toISOString() });
     setUnlocked(true);
-    ls.set("starter_pack_unlocked", true);
+    ls.set('starter_pack_unlocked', true);
   }
 
   return (
-    <main>
-      <section className="py-16 md:py-24">
-        <Container>
-          <div className="max-w-3xl">
-            <h1 className="text-3xl font-semibold">Compliance Evidence Starter Pack</h1>
-            <p className="mt-2 text-[var(--text)]">CEL policies for invariants, Kyverno defaults, log/retention templates (PCI precise, DORA/NIS2 rationale), runbooks, and a policy test suite. Fill this once to unlock.</p>
-          </div>
-          {unlocked ? (
-            <div className="mt-6 max-w-3xl space-y-3">
-              <div className="rounded-2xl ring-1 ring-[var(--ring)] p-4 bg-[var(--surface)] flex items-center justify-between">
-                <div className="flex items-center gap-2 font-medium"><Download className="h-5 w-5" />Your pack is unlocked</div>
-                <button type="button" className="inline-flex items-center gap-2 rounded-full ring-1 ring-[var(--ring)] px-4 py-2" onClick={() => trackEvent("pack_download_clicked")}>Download .zip</button>
-              </div>
-              <div className="rounded-[var(--radius,14px)] ring-1 ring-[var(--ring)] bg-[var(--surface)] p-5">
-                <div className="font-medium inline-flex items-center gap-2"><Calendar className="h-5 w-5" />Book a Baseline Fit call</div>
-                <p className="text-sm text-[var(--muted)] mt-2">Pick a 30‑min slot to confirm scope and dates.</p>
-                <div className="mt-4 aspect-video w-full ring-1 ring-[var(--ring)] rounded-2xl bg-[var(--bg-soft)] flex items-center justify-center text-[var(--muted-2)]">
+    <Page>
+      <Container>
+        <Page.Header>
+          <Page.Title>Compliance Evidence Starter Pack</Page.Title>
+          <Page.Description>
+            CEL policies for invariants, Kyverno defaults, log/retention
+            templates (PCI precise, DORA/NIS2 rationale), runbooks, and a policy
+            test suite. Fill this once to unlock.
+          </Page.Description>
+        </Page.Header>
+
+        {unlocked ? (
+          <div className="mx-auto mt-6 max-w-3xl space-y-4">
+            <Card>
+              <CardHeader className="flex flex-row items-center justify-between">
+                <div className="flex items-center gap-2">
+                  <Download className="h-5 w-5" />
+                  <CardTitle className="text-base font-medium">
+                    Your pack is unlocked
+                  </CardTitle>
+                </div>
+                <Button
+                  onClick={() => trackEvent('pack_download_clicked')}
+                  size="sm"
+                >
+                  Download .zip
+                </Button>
+              </CardHeader>
+            </Card>
+            <Card>
+              <CardHeader>
+                <div className="flex items-center gap-2">
+                  <Calendar className="h-5 w-5" />
+                  <CardTitle className="text-base font-medium">
+                    Book a Baseline Fit call
+                  </CardTitle>
+                </div>
+              </CardHeader>
+              <CardContent>
+                <p className="text-sm text-muted-foreground">
+                  Pick a 30-min slot to confirm scope and dates.
+                </p>
+                <div className="mt-4 flex aspect-video w-full items-center justify-center rounded-lg border bg-muted/20 text-muted-foreground">
                   <span>Calendly embed placeholder</span>
                 </div>
-                <Link to="/book" className="mt-3 inline-flex items-center gap-2 text-sm underline">Open booking page <ArrowRight className="h-4 w-4" /></Link>
-              </div>
+                <Button variant="link" className="px-0" asChild>
+                  <Link to="/book" className="mt-3">
+                    Open booking page <ArrowRight className="ml-2 h-4 w-4" />
+                  </Link>
+                </Button>
+              </CardContent>
+            </Card>
+          </div>
+        ) : (
+          <form
+            onSubmit={submit}
+            className="mx-auto grid max-w-3xl gap-4 md:grid-cols-2"
+          >
+            <div>
+              <Label htmlFor="email">Work email</Label>
+              <Input
+                id="email"
+                type="email"
+                placeholder="Work email"
+                value={form.email}
+                onChange={(e) => setForm({ ...form, email: e.target.value })}
+                required
+              />
             </div>
-          ) : (
-            <form onSubmit={submit} className="mt-6 grid md:grid-cols-2 gap-4 max-w-3xl">
-              <input className="ring-1 ring-[var(--ring)] rounded-lg px-3 py-2 bg-[var(--surface)]" placeholder="Work email" value={form.email} onChange={e => setForm({ ...form, email: e.target.value })} />
-              <input className="ring-1 ring-[var(--ring)] rounded-lg px-3 py-2 bg-[var(--surface)]" placeholder="Role (e.g., Head of Platform)" value={form.role} onChange={e => setForm({ ...form, role: e.target.value })} />
-              <input className="ring-1 ring-[var(--ring)] rounded-lg px-3 py-2 bg-[var(--surface)]" placeholder="Organization" value={form.org} onChange={e => setForm({ ...form, org: e.target.value })} />
-              <input className="ring-1 ring-[var(--ring)] rounded-lg px-3 py-2 bg-[var(--surface)]" placeholder="Infra (Cloud/On‑prem)" value={form.infra} onChange={e => setForm({ ...form, infra: e.target.value })} />
-              <select className="ring-1 ring-[var(--ring)] rounded-lg px-3 py-2 bg-[var(--surface)]" value={form.regime} onChange={e => setForm({ ...form, regime: e.target.value })}>
-                <option value="">Compliance driver</option>
-                <option>NIS2</option>
-                <option>DORA</option>
-                <option>PCI DSS</option>
-                <option>Other</option>
-              </select>
-              <select className="ring-1 ring-[var(--ring)] rounded-lg px-3 py-2 bg-[var(--surface)]" value={form.timeline} onChange={e => setForm({ ...form, timeline: e.target.value })}>
-                <option value="">Timeline</option>
-                <option>≤ 3 months</option>
-                <option>3–6 months</option>
-                <option>6–12 months</option>
-              </select>
-              <button className="md:col-span-2 inline-flex items-center justify-center gap-2 rounded-full bg-[var(--accent-600)] hover:bg-[var(--accent-700)] text-white px-5 py-2.5"><Download className="h-4 w-4" /> Unlock the pack</button>
-              <p className="md:col-span-2 text-xs text-[var(--muted-2)]">No spam. We’ll send one link and a Calendly to book a fit call.</p>
-            </form>
-          )}
-        </Container>
-      </section>
-    </main>
+            <div>
+              <Label htmlFor="role">Role</Label>
+              <Input
+                id="role"
+                placeholder="e.g., Head of Platform"
+                value={form.role}
+                onChange={(e) => setForm({ ...form, role: e.target.value })}
+              />
+            </div>
+            <div>
+              <Label htmlFor="org">Organization</Label>
+              <Input
+                id="org"
+                placeholder="Organization"
+                value={form.org}
+                onChange={(e) => setForm({ ...form, org: e.target.value })}
+              />
+            </div>
+            <div>
+              <Label htmlFor="infra">Infrastructure</Label>
+              <Input
+                id="infra"
+                placeholder="Cloud / On-prem"
+                value={form.infra}
+                onChange={(e) => setForm({ ...form, infra: e.target.value })}
+              />
+            </div>
+            <div>
+              <Label htmlFor="regime">Compliance driver</Label>
+              <Select
+                onValueChange={(value) => setForm({ ...form, regime: value })}
+              >
+                <SelectTrigger>
+                  <SelectValue placeholder="Compliance driver" />
+                </SelectTrigger>
+                <SelectContent>
+                  <SelectItem value="nis2">NIS2</SelectItem>
+                  <SelectItem value="dora">DORA</SelectItem>
+                  <SelectItem value="pci">PCI DSS</SelectItem>
+                  <SelectItem value="other">Other</SelectItem>
+                </SelectContent>
+              </Select>
+            </div>
+            <div>
+              <Label htmlFor="timeline">Timeline</Label>
+              <Select
+                onValueChange={(value) => setForm({ ...form, timeline: value })}
+              >
+                <SelectTrigger>
+                  <SelectValue placeholder="Timeline" />
+                </SelectTrigger>
+                <SelectContent>
+                  <SelectItem value="3m">≤ 3 months</SelectItem>
+                  <SelectItem value="3-6m">3–6 months</SelectItem>
+                  <SelectItem value="6-12m">6–12 months</SelectItem>
+                </SelectContent>
+              </Select>
+            </div>
+            <div className="md:col-span-2">
+              <Button type="submit" className="w-full">
+                <Download className="mr-2 h-4 w-4" />
+                Get Starter Pack
+              </Button>
+            </div>
+            <p className="md:col-span-2 text-center text-xs text-muted-foreground">
+              No spam. We’ll send one link and a Calendly to book a fit call.
+            </p>
+          </form>
+        )}
+      </Container>
+    </Page>
   );
 }
 

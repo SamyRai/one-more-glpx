@@ -7,6 +7,7 @@ import Post from '@/pages/Post';
 import StarterPack from '@/pages/StarterPack';
 import Book from '@/pages/Book';
 import Privacy from '@/pages/Privacy';
+import Contact from '@/pages/Contact';
 import NotFound from '@/pages/NotFound';
 import { Page } from '@/components/ui/Page';
 
@@ -25,7 +26,8 @@ function AnimatedRoutes() {
         <Route path="/posts/:slug" element={<Page><Post /></Page>} />
         <Route path="/starter-pack" element={<Page><StarterPack /></Page>} />
         <Route path="/book" element={<Page><Book /></Page>} />
-        <Route path="/privacy" element={<Page><Privacy /></Page>} />
+        <Route path="/contact" element={<Page><Contact /></Page>} />
+        <Route path="/privacy"element={<Page><Privacy /></Page>} />
         <Route path="*" element={<Page><NotFound /></Page>} />
       </Routes>
     </AnimatePresence>
