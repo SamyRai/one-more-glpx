@@ -1,7 +1,6 @@
-import React, { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
-import { setMetaDescription } from "@/lib/meta";
-import { Download, Calendar, ArrowRight } from "lucide-react";
+import React, { useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
+import { Download, Calendar, ArrowRight } from 'lucide-react';
 import { useUTM } from "@/hooks/useUTM";
 import { ls, trackEvent } from "@/lib/localStorage";
 import { Page } from "@/components/ui/Page";
@@ -15,30 +14,27 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/Select";
-import { Label } from "@/components/ui/Label";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/Card";
+import { Label } from '@/components/ui/Label';
+import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/Card';
+import { Seo } from '@/components/ui/Seo';
 
 function StarterPack() {
   const utm = useUTM();
   const [form, setForm] = useState({
-    email: "",
-    role: "",
-    org: "",
-    infra: "",
-    regime: "",
-    timeline: "",
+    email: '',
+    role: '',
+    org: '',
+    infra: '',
+    regime: '',
+    timeline: '',
   });
   const [unlocked, setUnlocked] = useState(
-    ls.get("starter_pack_unlocked", false),
+    ls.get('starter_pack_unlocked', false),
   );
 
   useEffect(() => {
-    document.title = "Starter Pack • Week‑to‑Ready";
-    setMetaDescription(
-      "Get our Compliance Evidence Starter Pack: CEL policies, Kyverno defaults, log/retention templates, runbooks, and a policy test suite.",
-    );
     if (Object.keys(utm).length > 0) {
-      ls.set("last_utm", utm);
+      ls.set('last_utm', utm);
     }
   }, [utm]);
 
@@ -56,6 +52,11 @@ function StarterPack() {
 
   return (
     <Page>
+      <Seo
+        title="Compliance Evidence Starter Pack"
+        description="Get our Compliance Evidence Starter Pack: CEL policies, Kyverno defaults, log/retention templates, runbooks, and a policy test suite."
+        canonical="/starter-pack"
+      />
       <Container>
         <Page.Header>
           <Page.Title>Compliance Evidence Starter Pack</Page.Title>

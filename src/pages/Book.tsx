@@ -1,19 +1,17 @@
-import React, { useEffect } from "react";
-import { setMetaDescription } from "@/lib/meta";
-import { Page } from "@/components/ui/Page";
-import { Container } from "@/components/ui/Container";
-import { BookingForm } from "@/components/sections/BookingForm";
+import * as React from 'react';
+import { Page } from '@/components/ui/Page';
+import { Container } from '@/components/ui/Container';
+import { BookingForm } from '@/components/sections/BookingForm';
+import { Seo } from '@/components/ui/Seo';
 
 function Book() {
-  useEffect(() => {
-    document.title = "Book a call • Week-to-Ready";
-    setMetaDescription(
-      "Book a 30-minute call to discuss your Kubernetes security needs and see how we can help you achieve a security baseline in just one week.",
-    );
-  }, []);
-
   return (
     <Page>
+      <Seo
+        title="Book a call"
+        description="Book a 30-minute call to discuss your Kubernetes security needs and see how we can help you achieve a security baseline in just one week."
+        canonical="/book"
+      />
       <Container>
         <Page.Header>
           <Page.Title>Book a Baseline Fit call</Page.Title>

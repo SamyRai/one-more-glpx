@@ -1,11 +1,10 @@
-import React, { useEffect } from "react";
-import { Link } from "react-router-dom";
-import { setMetaDescription } from "@/lib/meta";
-import { Download, ArrowRight } from "lucide-react";
-import { usePosts } from "@/hooks/usePosts";
-import { Page } from "@/components/ui/Page";
-import { Container } from "@/components/ui/Container";
-import { Button } from "@/components/ui/Button";
+import * as React from 'react';
+import { Link } from 'react-router-dom';
+import { Download, ArrowRight } from 'lucide-react';
+import { usePosts } from '@/hooks/usePosts';
+import { Page } from '@/components/ui/Page';
+import { Container } from '@/components/ui/Container';
+import { Button } from '@/components/ui/Button';
 import {
   Card,
   CardContent,
@@ -13,19 +12,19 @@ import {
   CardFooter,
   CardHeader,
   CardTitle,
-} from "@/components/ui/Card";
+} from '@/components/ui/Card';
+import { Seo } from '@/components/ui/Seo';
 
 function Posts() {
-  useEffect(() => {
-    document.title = "Articles • Week-to-Ready";
-    setMetaDescription(
-      "Read our latest articles and posts on Kubernetes, security, and compliance to stay up-to-date on industry best practices.",
-    );
-  }, []);
   const posts = usePosts();
 
   return (
     <Page>
+      <Seo
+        title="Articles"
+        description="Read our latest articles and posts on Kubernetes, security, and compliance to stay up-to-date on industry best practices."
+        canonical="/posts"
+      />
       <Container>
         <Page.Header>
           <div className="flex w-full items-center justify-between">

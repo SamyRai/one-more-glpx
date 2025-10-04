@@ -1,31 +1,23 @@
-import React, { useEffect } from "react";
-import { useParams, useNavigate, Link } from "react-router-dom";
-import { setMetaDescription } from "@/lib/meta";
-import { POSTS } from "@/data/posts";
-import { Container } from "@/components/ui/Container";
-import { Button } from "@/components/ui/Button";
-import { Download, Calendar } from "lucide-react";
+import * as React from 'react';
+import { useParams, useNavigate, Link } from 'react-router-dom';
+import { POSTS } from '@/data/posts';
+import { Container } from '@/components/ui/Container';
+import { Button } from '@/components/ui/Button';
+import { Download, Calendar } from 'lucide-react';
+import { Seo } from '@/components/ui/Seo';
 
 function Post() {
   const { slug } = useParams<{ slug: string }>();
   const post = POSTS.find((p) => p.slug === slug);
   const navigate = useNavigate();
 
-  useEffect(() => {
-    if (post) {
-      document.title = `${post.title} • Week‑to‑Ready`;
-      setMetaDescription(post.excerpt);
-    } else {
-      document.title = "Post not found • Week‑to‑Ready";
-    }
-  }, [post]);
-
   if (!post) {
     return (
       <Container>
+        <Seo title="Post not found" robots="noindex" />
         <div className="py-20 text-center">
           <div className="text-2xl font-semibold">Post not found</div>
-          <Button variant="link" onClick={() => navigate("/posts")}>
+          <Button variant="link" onClick={() => navigate('/posts')}>
             Back to all posts
           </Button>
         </div>
@@ -33,8 +25,26 @@ function Post() {
     );
   }
 
+  const articleSchema = {
+    '@context': 'https://schema.org',
+    '@type': 'Article',
+    headline: post.title,
+    description: post.excerpt,
+    datePublished: post.date,
+    author: {
+      '@type': 'Organization',
+      name: 'Week-to-Ready',
+    },
+  };
+
   return (
     <main>
+      <Seo
+        title={post.title}
+        description={post.excerpt}
+        canonical={`/posts/${post.slug}`}
+        schema={articleSchema}
+      />
       <section className="py-16 md:py-24">
         <Container>
           <div className="text-sm text-muted-foreground">

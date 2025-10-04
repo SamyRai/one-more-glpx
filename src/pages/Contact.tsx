@@ -1,20 +1,14 @@
-import * as React from "react";
-import { setMetaDescription } from "@/lib/meta";
-import { Page } from "@/components/ui/Page";
-import { Container } from "@/components/ui/Container";
-import { Button } from "@/components/ui/Button";
-import { Input } from "@/components/ui/Input";
-import { Textarea } from "@/components/ui/Textarea";
-import { Label } from "@/components/ui/Label";
+import * as React from 'react';
+import { Page } from '@/components/ui/Page';
+import { Container } from '@/components/ui/Container';
+import { Button } from '@/components/ui/Button';
+import { Input } from '@/components/ui/Input';
+import { Textarea } from '@/components/ui/Textarea';
+import { Label } from '@/components/ui/Label';
+import { Seo } from '@/components/ui/Seo';
 
 function Contact() {
-  const [status, setStatus] = React.useState("");
-  React.useEffect(() => {
-    document.title = "Contact • Week-to-Ready";
-    setMetaDescription(
-      "Have a question or want to work together? Fill out our contact form, and we'll get back to you as soon as possible.",
-    );
-  }, []);
+  const [status, setStatus] = React.useState('');
 
   async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
@@ -26,6 +20,11 @@ function Contact() {
 
   return (
     <Page>
+      <Seo
+        title="Contact"
+        description="Have a question or want to work together? Fill out our contact form, and we'll get back to you as soon as possible."
+        canonical="/contact"
+      />
       <Container>
         <Page.Header>
           <Page.Title>Contact Us</Page.Title>
