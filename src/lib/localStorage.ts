@@ -16,7 +16,10 @@ export const ls = {
   },
 };
 
-export function trackEvent(name: string, payload: Record<string, unknown> = {}) {
+export function trackEvent(
+  name: string,
+  payload: Record<string, unknown> = {},
+) {
   const events = ls.get<unknown[]>("events", []);
   const entry = { ts: new Date().toISOString(), name, ...payload };
   events.push(entry);

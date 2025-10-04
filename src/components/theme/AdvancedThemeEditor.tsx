@@ -1,25 +1,25 @@
-import * as React from 'react';
-import { useTheme } from '@/hooks/useTheme';
-import { Card } from '@/components/ui/Card';
-import { Label } from '@/components/ui/Label';
-import { Input } from '@/components/ui/Input';
-import { Button } from '@/components/ui/Button';
+import * as React from "react";
+import { useTheme } from "@/hooks/useTheme";
+import { Card } from "@/components/ui/Card";
+import { Label } from "@/components/ui/Label";
+import { Input } from "@/components/ui/Input";
+import { Button } from "@/components/ui/Button";
 
 function AdvancedThemeEditor() {
   const { theme, setTheme } = useTheme();
   const [vars, setVars] = React.useState(theme?.vars || {});
   const [radius, setRadius] = React.useState(
     Number.parseInt(
-      (theme?.vars?.['--radius'] || '14').toString().replace('px', '')
-    ) || 14
+      (theme?.vars?.["--radius"] || "14").toString().replace("px", ""),
+    ) || 14,
   );
 
   React.useEffect(() => {
     setVars(theme?.vars || {});
     setRadius(
       Number.parseInt(
-        (theme?.vars?.['--radius'] || '14').toString().replace('px', '')
-      ) || 14
+        (theme?.vars?.["--radius"] || "14").toString().replace("px", ""),
+      ) || 14,
     );
   }, [theme]);
 
@@ -30,7 +30,7 @@ function AdvancedThemeEditor() {
   function save() {
     setTheme({
       name: `${theme.name} (custom)`,
-      vars: { ...vars, '--radius': `${radius}px` },
+      vars: { ...vars, "--radius": `${radius}px` },
     });
   }
 
@@ -42,20 +42,20 @@ function AdvancedThemeEditor() {
           <Label className="mb-1 text-sm">Accent palette</Label>
           <div className="grid grid-cols-2 gap-3 md:grid-cols-3">
             {[
-              '--accent-50',
-              '--accent-100',
-              '--accent-200',
-              '--accent-300',
-              '--accent-600',
-              '--accent-700',
+              "--accent-50",
+              "--accent-100",
+              "--accent-200",
+              "--accent-300",
+              "--accent-600",
+              "--accent-700",
             ].map((key) => (
               <Label key={key} className="text-xs">
                 <div className="mb-1 text-muted-foreground">
-                  {key.replace('--', '')}
+                  {key.replace("--", "")}
                 </div>
                 <Input
                   type="color"
-                  value={vars[key] || '#000000'}
+                  value={vars[key] || "#000000"}
                   onChange={(e) => updateVar(key, e.target.value)}
                   className="h-10 w-full"
                 />

@@ -1,17 +1,13 @@
-import * as React from 'react';
-import { cn } from '@/lib/utils';
+import * as React from "react";
+import { cn } from "@/lib/utils";
 
 const Section = React.forwardRef<
   HTMLElement,
   React.HTMLAttributes<HTMLElement>
 >(({ className, ...props }, ref) => (
-  <section
-    ref={ref}
-    className={cn('py-16 lg:py-24', className)}
-    {...props}
-  />
+  <section ref={ref} className={cn("py-16 lg:py-24", className)} {...props} />
 ));
 
-Section.displayName = 'Section';
+Section.displayName = "Section";
 
 export { Section };

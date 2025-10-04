@@ -1,1 +1,8 @@
-Installing dependencies...
+yarn run v1.22.22
+$ vite
+[33mThe CJS build of Vite's Node API is deprecated. See https://vite.dev/guide/troubleshooting.html#vite-cjs-node-api-deprecated for more details.[39m
+
+  VITE v5.4.20  ready in 1032 ms
+
+  ➜  Local:   http://localhost:5173/
+  ➜  Network: use --host to expose

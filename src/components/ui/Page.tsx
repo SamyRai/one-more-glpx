@@ -1,6 +1,6 @@
-import * as React from 'react';
-import { motion, useReducedMotion } from 'framer-motion';
-import { cn } from '@/lib/utils';
+import * as React from "react";
+import { motion, useReducedMotion } from "framer-motion";
+import { cn } from "@/lib/utils";
 
 const Page = React.forwardRef<
   HTMLDivElement,
@@ -24,6 +24,44 @@ const Page = React.forwardRef<
   );
 });
 
-Page.displayName = 'Page';
+Page.displayName = "Page";
+
+const PageHeader = React.forwardRef<
+  HTMLDivElement,
+  React.HTMLAttributes<HTMLDivElement>
+>(({ className, ...props }, ref) => (
+  <div ref={ref} className={cn("mb-8 text-center", className)} {...props} />
+));
+PageHeader.displayName = "PageHeader";
+
+const PageTitle = React.forwardRef<
+  HTMLHeadingElement,
+  React.HTMLAttributes<HTMLHeadingElement>
+>(({ className, children, ...props }, ref) => (
+  <h1
+    ref={ref}
+    className={cn('text-3xl font-semibold tracking-tight', className)}
+    {...props}
+  >
+    {children}
+  </h1>
+));
+PageTitle.displayName = "PageTitle";
+
+const PageDescription = React.forwardRef<
+  HTMLParagraphElement,
+  React.HTMLAttributes<HTMLParagraphElement>
+>(({ className, ...props }, ref) => (
+  <p
+    ref={ref}
+    className={cn("mt-2 text-muted-foreground", className)}
+    {...props}
+  />
+));
+PageDescription.displayName = "PageDescription";
+
+Page.Header = PageHeader;
+Page.Title = PageTitle;
+Page.Description = PageDescription;
 
 export { Page };

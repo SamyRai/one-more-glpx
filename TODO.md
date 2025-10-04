@@ -27,6 +27,7 @@ This document tracks the progress of refactoring the component library to enforc
 This phase focuses on building a comprehensive set of 15 new, reusable primitive components to form a complete design system.
 
 ### Form Components
+
 - [x] **Label.tsx**: For accessible form field labeling.
 - [x] **Checkbox.tsx**: For boolean selections.
 - [x] **RadioGroup.tsx**: For selecting one option from a set.
@@ -34,6 +35,7 @@ This phase focuses on building a comprehensive set of 15 new, reusable primitive
 - [x] **Switch.tsx**: For on/off toggles.
 
 ### Layout & Content
+
 - [x] **Accordion.tsx**: For collapsible content sections.
 - [x] **Tabs.tsx**: For organizing content into switchable views.
 - [x] **Separator.tsx**: A visual divider.
@@ -41,6 +43,7 @@ This phase focuses on building a comprehensive set of 15 new, reusable primitive
 - [x] **Sheet.tsx**: A side panel that slides out.
 
 ### Feedback & Status
+
 - [x] **Alert.tsx**: For important messages (e.g., success, warning, error).
 - [x] **Tooltip.tsx**: For showing information on hover.
 - [x] **Badge.tsx**: For displaying statuses or tags.
@@ -52,10 +55,12 @@ This phase focuses on building a comprehensive set of 15 new, reusable primitive
 After the new primitives are created, the audit will resume on higher-order components to ensure they correctly compose our new, richer set of primitives.
 
 ### Layout Components (`src/components/layout/`)
+
 - [x] **Footer.tsx**: Audit for primitive composition and style consistency.
 - [x] **Header.tsx**: Audit for primitive composition and style consistency.
 
 ### Section Components (`src/components/sections/`)
+
 - [x] **EvidenceTeaser.tsx**: Audit for primitive composition and style consistency.
 - [x] **FAQ.tsx**: Audit for primitive composition and style consistency.
 - [x] **FeaturedArticles.tsx**: Audit for primitive composition and style consistency.

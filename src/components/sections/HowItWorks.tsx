@@ -1,10 +1,10 @@
-import * as React from 'react';
-import { motion, useReducedMotion } from 'framer-motion';
-import { CheckCircle2 } from 'lucide-react';
-import { Container } from '@/components/ui/Container';
-import { Card } from '@/components/ui/Card';
-import { Badge } from '@/components/ui/Badge';
-import { steps, deliverables } from '@/data/how-it-works';
+import * as React from "react";
+import { motion, useReducedMotion } from "framer-motion";
+import { CheckCircle2 } from "lucide-react";
+import { Container } from "@/components/ui/Container";
+import { Card } from "@/components/ui/Card";
+import { Badge } from "@/components/ui/Badge";
+import { steps, deliverables } from "@/data/how-it-works";
 
 function HowItWorks() {
   const prefersReduced = useReducedMotion();

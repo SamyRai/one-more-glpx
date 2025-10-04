@@ -55,7 +55,9 @@
   }
   body {
     @apply bg-background text-foreground;
-    font-feature-settings: 'ss01' 1, 'cv02' 1;
+    font-feature-settings:
+      "ss01" 1,
+      "cv02" 1;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
   }
@@ -72,7 +74,9 @@
 
   a,
   button {
-    transition: background-color 0.2s ease, color 0.2s ease,
+    transition:
+      background-color 0.2s ease,
+      color 0.2s ease,
       border-color 0.2s ease;
   }
 }
