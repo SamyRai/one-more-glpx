@@ -5,6 +5,7 @@ import { ComparisonTable } from "@/components/marketing/ComparisonTable";
 import { VideoPlayer } from "@/components/marketing/VideoPlayer";
 import { ImageGallery } from "@/components/marketing/ImageGallery";
 import { Roadmap } from "@/components/marketing/Roadmap";
+import { useProductRoadmap } from "@/hooks/useProductRoadmap";
 import { CaseStudyTeaser } from "@/components/marketing/CaseStudyTeaser";
 import { Section } from "@/components/ui/Section";
 
@@ -23,14 +24,9 @@ const galleryImages = [
   { src: "https://images.unsplash.com/photo-1526628953301-3e589a6a8b74?q=80&w=1995&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D", alt: "A timeline view of security events and alerts for incident response." },
 ];
 
-const roadmapSteps = [
-  { title: "Q3 2024 - Expanded Compliance Packs", description: "Adding support for HIPAA and SOC 2 compliance standards.", status: "completed" as const },
-  { title: "Q4 2024 - Public API Launch", description: "Enabling programmatic access to automate security workflows.", status: "current" as const },
-  { title: "Q1 2025 - Advanced Threat Intelligence", description: "Integrating with leading threat intelligence feeds for proactive defense.", status: "upcoming" as const },
-  { title: "Q2 2025 - Serverless Security Module", description: "Extending our security coverage to serverless environments.", status: "upcoming" as const },
-];
-
 function ProductPage() {
+  const roadmapSteps = useProductRoadmap();
+
   return (
     <Page>
       <Seo title="Product Features" description="Explore the powerful features of our Kubernetes security platform." />

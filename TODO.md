@@ -1,36 +1,66 @@
-# TODO
+# Component Refactoring Audit & Plan
 
-This file tracks the progress of creating a new set of content-related and marketing components.
+This document tracks the effort to refactor the component library for better composition, reusability, and separation of concerns.
 
-## Component Checklist
+## Audit Checklist & Goals
 
-### Marketing Components (Phase 1 - Complete)
+- [x] **Separation of Concerns:** Move hardcoded data from components into a dedicated `/data` directory.
+- [x] **Logic Extraction:** Move component-specific logic into custom hooks (`/hooks`).
+- [x] **Component Composition:** Ensure `sections` components compose `marketing` or `ui` components, passing data as props.
+- [x] **Consistency:** Apply patterns uniformly across the entire component library.
+- [x] **Props Purity:** Components should primarily receive data via props, not manage complex state internally where it can be lifted.
 
-*   [x] `Feature` - To highlight a specific product feature.
-*   [x] `Pricing` - To display different pricing plans.
-*   [x] `Testimonial` - To display customer testimonials.
-*   [x] `CallToAction` - To encourage user sign-ups.
+## Components Refactored
 
-### Marketing Components (Phase 2 - Complete)
+### Sections
 
-*   [x] `TeamSection` - To showcase team members.
-*   [x] `StatsSection` - To highlight key metrics.
-*   [x] `NewsletterSignup` - A form for email signups.
-*   [x] `AnnouncementBanner` - A site-wide banner.
-*   [x] `ComparisonTable` - To compare features.
-*   [x] `VideoPlayer` - For embedding videos.
-*   [x] `ImageGallery` - To showcase images.
-*   [x] `Roadmap` - To display product roadmap.
-*   [x] `CaseStudyTeaser` - To feature case studies.
-*   [x] `Timeline` - To illustrate chronological events.
+- [x] **`Features.tsx`**:
+    -   **Issue:** Hardcoded feature data (title, description, icon).
+    -   **Resolution:** Extracted data to `src/data/features.ts` and created `useFeatures` hook.
+- [x] **`PricingSection.tsx`**:
+    -   **Issue:** Hardcoded pricing plan data and comparison features.
+    -   **Resolution:** Extracted data to `src/data/pricing.ts` and created `usePricing` hook.
+- [x] **`CustomerStories.tsx`**:
+    -   **Issue:** Hardcoded case study content.
+    -   **Resolution:** Extracted data to `src/data/customer-stories.ts` and created `useCustomerStories` hook.
+- [x] **`Testimonials.tsx`**:
+    -   **Issue:** Hardcoded testimonials.
+    -   **Resolution:** Extracted data to `src/data/testimonials.ts` and created `useTestimonials` hook.
+- [x] **`Logos.tsx`**:
+    -   **Issue:** Audited for hardcoded data.
+    -   **Resolution:** No issues found. Already uses `src/data/technologies.ts`.
 
-## Implementation Details
+### Marketing
 
-*   **Directory:** All new marketing components will be located in `src/components/marketing`.
-*   **Reusability:** Components should be designed for reuse across different parts of the application.
-*   **Composability:** Components should be easily composable with each other and with existing components.
-*   **Theming:** Components will adhere to the existing theme defined in the application.
-*   **Accessibility (a11y):** All components must meet accessibility standards.
-*   **Internationalization (i18n):** All components must support internationalization.
-*   **Testing:** Each component will have corresponding unit tests.
-*   **Linting:** All code must be well-linted and adhere to the project's coding standards.
+- [x] **`NewsletterSignup.tsx`**:
+    -   **Issue:** Lacked state management; logic was not separated.
+    -   **Resolution:** Added form state logic and extracted it to a `useNewsletterSignup` hook.
+- [x] **`Roadmap.tsx`**:
+    -   **Issue:** Data was hardcoded in the pages where the component was used.
+    -   **Resolution:** Extracted data to `src/data/roadmap.ts` and created `useRoadmap` hook. Refactored `MarketingPage.tsx` and `ProductPage.tsx` to use the hook.
+
+## New Items for Future Refactoring
+
+### Pages
+
+- [ ] **`MarketingPage.tsx`**:
+    -   **Issue:** Contains hardcoded data for `comparisonFeatures`, `galleryImages`, and `timelineItems`.
+    -   **Plan:** Extract data to new files in `src/data` and create corresponding hooks.
+- [ ] **`ProductPage.tsx`**:
+    -   **Issue:** Contains hardcoded data for `comparisonFeatures`, `galleryImages`, and `CaseStudyTeaser` components.
+    -   **Plan:** Extract data to new files in `src/data` and create corresponding hooks.
+
+## Refactoring Phases
+
+**Phase 1: Data and Logic Extraction (Completed)**
+- Focused on `Features`, `PricingSection`, and `NewsletterSignup`.
+
+**Phase 2: Verification and Refinement (Completed)**
+- Audited and refactored `CustomerStories`, `Testimonials`, `Logos`, and `Roadmap`.
+- Updated this `TODO.md` file.
+
+**Phase 3: Review and Cleanup (Next)**
+1.  Perform a full review of all changes.
+2.  Run all tests and linting to ensure codebase health.
+3.  Remove any dead code or unused files resulting from the refactor.
+4.  Submit the final changes.
