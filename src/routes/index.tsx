@@ -12,6 +12,7 @@ import NotFound from "@/pages/NotFound";
 import MarketingPage from "@/pages/Marketing";
 import AboutPage from "@/pages/About";
 import ProductPage from "@/pages/Product";
+import CaseStudiesPage from "@/pages/CaseStudies";
 import { Page } from "@/components/ui/Page";
 
 function AnimatedRoutes() {
@@ -101,6 +102,14 @@ function AnimatedRoutes() {
           element={
             <Page>
               <ProductPage />
+            </Page>
+          }
+        />
+        <Route
+          path="/case-studies"
+          element={
+            <Page>
+              <CaseStudiesPage />
             </Page>
           }
         />
