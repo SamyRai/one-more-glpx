@@ -6,7 +6,7 @@ import { Logos } from '@/components/sections/Logos';
 import { HowItWorks } from '@/components/sections/HowItWorks';
 import { Features } from '@/components/sections/Features';
 import { Testimonials } from '@/components/sections/Testimonials';
-import { PricingSection } from '@/components/sections/Pricing';
+import { PricingSection } from '@/components/sections/PricingSection';
 import { CTA } from '@/components/sections/CTA';
 import { FAQ } from '@/components/sections/FAQ';
 

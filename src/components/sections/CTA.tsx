@@ -4,9 +4,9 @@ import { Button } from "@/components/ui/Button";
 export function CTA() {
   return (
     <CallToAction
-      title="Ready to dive in?"
-      description="Start your free trial today and experience the future of Kubernetes security."
-      action={<Button size="lg">Get Started</Button>}
+      title="Stop Worrying About Kubernetes Security."
+      description="Deploy a secure, compliant, and efficient cluster in minutes, not months. Start your free trial and see the difference for yourself."
+      action={<Button size="lg">Secure Your Cluster Now</Button>}
       variant="primary"
     />
   );

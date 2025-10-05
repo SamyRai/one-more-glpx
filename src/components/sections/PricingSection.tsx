@@ -4,26 +4,26 @@ import { Button } from "@/components/ui/Button";
 
 const pricingPlans = [
   {
-    title: "Basic",
+    title: "Developer",
     price: "$0",
-    period: "month",
-    features: ["1 user", "1 project", "1GB storage"],
-    action: <Button variant="outline">Get Started</Button>,
+    period: "forever",
+    features: ["1 connected cluster", "Core security scanning", "Community support"],
+    action: <Button variant="outline">Start for Free</Button>,
   },
   {
-    title: "Pro",
-    price: "$49",
+    title: "Team",
+    price: "$249",
     period: "month",
-    features: ["5 users", "Unlimited projects", "10GB storage"],
-    action: <Button>Get Started</Button>,
+    features: ["Up to 5 clusters", "Automated compliance (PCI, DORA)", "eBPF-based observability", "Priority email support"],
+    action: <Button>Start 14-Day Trial</Button>,
     variant: "primary",
   },
   {
     title: "Enterprise",
-    price: "Contact us",
+    price: "Custom",
     period: "year",
-    features: ["Unlimited users", "Unlimited projects", "Unlimited storage"],
-    action: <Button variant="outline">Contact Us</Button>,
+    features: ["Unlimited clusters", "Dedicated account manager", "24/7 emergency support", "Custom policy development"],
+    action: <Button variant="outline">Contact Sales</Button>,
   },
 ];
 
