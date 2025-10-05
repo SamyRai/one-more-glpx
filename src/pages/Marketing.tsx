@@ -9,6 +9,7 @@ import { ComparisonTable } from "@/components/marketing/ComparisonTable";
 import { VideoPlayer } from "@/components/marketing/VideoPlayer";
 import { ImageGallery } from "@/components/marketing/ImageGallery";
 import { Roadmap } from "@/components/marketing/Roadmap";
+import { useMarketingRoadmap } from "@/hooks/useMarketingRoadmap";
 import { CaseStudyTeaser } from "@/components/marketing/CaseStudyTeaser";
 import { Timeline } from "@/components/marketing/Timeline";
 import { Section } from "@/components/ui/Section";
@@ -36,13 +37,6 @@ const galleryImages = [
   { src: "https://via.placeholder.com/400x300?text=Image+4", alt: "Image 4" },
 ];
 
-const roadmapSteps = [
-  { title: "Q1 - Planning", description: "Initial project planning and research.", status: "completed" as const },
-  { title: "Q2 - Development", description: "Core feature development.", status: "current" as const },
-  { title: "Q3 - Beta Launch", description: "Limited release for beta testers.", status: "upcoming" as const },
-  { title: "Q4 - Public Launch", description: "Full public release.", status: "upcoming" as const },
-];
-
 const timelineItems = [
     { date: "2023-01-15", title: "Company Founded", description: "Our journey began with a small team and a big idea." },
     { date: "2023-08-20", title: "First Product Launch", description: "We launched our first product to a group of beta testers." },
@@ -50,6 +44,8 @@ const timelineItems = [
 ];
 
 function MarketingPage() {
+  const roadmapSteps = useMarketingRoadmap();
+
   return (
     <Page>
       <Seo title="Marketing Components" description="A showcase of all marketing components." />
@@ -83,7 +79,7 @@ function MarketingPage() {
                 <h2 className="text-3xl font-bold text-center mb-8">Image Gallery</h2>
                 <ImageGallery images={galleryImages} />
             </div>
-        </Section>
+        </section>
         <Section>
             <div className="container">
                 <h2 className="text-3xl font-bold text-center mb-8">Roadmap</h2>
