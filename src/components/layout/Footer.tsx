@@ -3,12 +3,16 @@ import { Link } from "react-router-dom";
 import { Mail } from "lucide-react";
 import { Container } from "@/components/ui/Container";
 import { Button } from "@/components/ui/Button";
+import { NewsletterSignup } from "@/components/marketing/NewsletterSignup";
 
 function Footer() {
   return (
     <footer className="mt-16 border-t">
       <Container>
-        <div className="flex flex-col items-center justify-between gap-4 py-8 text-sm md:flex-row">
+        <div className="py-16">
+          <NewsletterSignup />
+        </div>
+        <div className="flex flex-col items-center justify-between gap-4 py-8 text-sm md:flex-row border-t">
           <p className="text-muted-foreground">
             © {new Date().getFullYear()} Week-to-Ready by GLPX
           </p>
