@@ -4,12 +4,25 @@ This file tracks the progress of creating a new set of content-related and marke
 
 ## Component Checklist
 
-### Marketing Components
+### Marketing Components (Phase 1 - Complete)
 
-*   [ ] `Feature` - To highlight a specific product feature.
-*   [ ] `Pricing` - To display different pricing plans.
-*   [ ] `Testimonial` - To display customer testimonials.
-*   [ ] `CallToAction` - To encourage user sign-ups.
+*   [x] `Feature` - To highlight a specific product feature.
+*   [x] `Pricing` - To display different pricing plans.
+*   [x] `Testimonial` - To display customer testimonials.
+*   [x] `CallToAction` - To encourage user sign-ups.
+
+### Marketing Components (Phase 2 - In Progress)
+
+*   [ ] `TeamSection` - To showcase team members.
+*   [ ] `StatsSection` - To highlight key metrics.
+*   [ ] `NewsletterSignup` - A form for email signups.
+*   [ ] `AnnouncementBanner` - A site-wide banner.
+*   [ ] `ComparisonTable` - To compare features.
+*   [ ] `VideoPlayer` - For embedding videos.
+*   [ ] `ImageGallery` - To showcase images.
+*   [ ] `Roadmap` - To display product roadmap.
+*   [ ] `CaseStudyTeaser` - To feature case studies.
+*   [ ] `Timeline` - To illustrate chronological events.
 
 ## Implementation Details
 

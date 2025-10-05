@@ -9,6 +9,7 @@ import Book from "@/pages/Book";
 import Privacy from "@/pages/Privacy";
 import Contact from "@/pages/Contact";
 import NotFound from "@/pages/NotFound";
+import MarketingPage from "@/pages/Marketing";
 import { Page } from "@/components/ui/Page";
 
 function AnimatedRoutes() {
@@ -74,6 +75,14 @@ function AnimatedRoutes() {
           element={
             <Page>
               <Privacy />
+            </Page>
+          }
+        />
+        <Route
+          path="/marketing"
+          element={
+            <Page>
+              <MarketingPage />
             </Page>
           }
         />
