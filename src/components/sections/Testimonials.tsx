@@ -7,21 +7,21 @@ const testimonials = [
     name: "Jane Doe",
     title: "CTO, Acme Inc.",
     quote:
-      "This product has been a game-changer for our team. We're now able to ship features faster and with more confidence.",
+      "The automated security baseline is a lifesaver. We've cut our pre-deployment security checks by 50%, allowing us to ship critical updates faster than ever.",
   },
   {
     image: "https://i.pravatar.cc/150?u=a042581f4e29026704d",
     name: "John Smith",
-    title: "CEO, Globex Corp.",
+    title: "Head of Platform, Globex Corp.",
     quote:
-      "I'm blown away by the quality of this product. It's clear that a lot of thought and care went into its design.",
+      "Finally, a security solution that doesn't slow us down. The eBPF-based monitoring gives us deep visibility without any noticeable performance hit on our clusters.",
   },
   {
     image: "https://i.pravatar.cc/150?u=a04258114e29026702d",
     name: "Alice Johnson",
-    title: "Developer, Stark Industries",
+    title: "Lead Security Engineer, Stark Industries",
     quote:
-      "I can't imagine going back to my old workflow. This product has saved me countless hours of frustration.",
+      "Meeting compliance standards like PCI and DORA used to be a manual, time-consuming nightmare. This platform automates evidence collection and makes audits a breeze.",
   },
 ];
 

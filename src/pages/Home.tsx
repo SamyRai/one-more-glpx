@@ -3,10 +3,11 @@ import { Seo } from '@/components/ui/Seo';
 import { organizationSchema } from '@/lib/schema';
 import { Hero } from '@/components/sections/Hero';
 import { Logos } from '@/components/sections/Logos';
+import { StatsSection } from "@/components/marketing/StatsSection";
 import { HowItWorks } from '@/components/sections/HowItWorks';
 import { Features } from '@/components/sections/Features';
 import { Testimonials } from '@/components/sections/Testimonials';
-import { PricingSection } from '@/components/sections/Pricing';
+import { PricingSection } from '@/components/sections/PricingSection';
 import { CTA } from '@/components/sections/CTA';
 import { FAQ } from '@/components/sections/FAQ';
 
@@ -21,6 +22,7 @@ function Home() {
       />
       <Hero />
       <Logos />
+      <StatsSection />
       <HowItWorks />
       <Features />
       <Testimonials />

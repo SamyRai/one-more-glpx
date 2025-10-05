@@ -7,19 +7,19 @@ const features = [
     icon: <ShieldCheck className="w-12 h-12 text-primary" />,
     title: "Secure by Default",
     description:
-      "We provide a secure baseline for your Kubernetes cluster, so you can focus on your business.",
+      "Automate your security baseline. Our platform enforces best practices out-of-the-box, letting you ship faster without sacrificing security.",
   },
   {
     icon: <Zap className="w-12 h-12 text-primary" />,
     title: "Blazing Fast",
     description:
-      "Our solution is designed to be fast and efficient, so you can get the most out of your cluster.",
+      "Instant insights, zero overhead. Our eBPF-based solution offers powerful observability with minimal performance impact, so your cluster runs at peak efficiency.",
   },
   {
     icon: <Gem className="w-12 h-12 text-primary" />,
     title: "Feature Rich",
     description:
-      "We provide a wide range of features to help you manage your cluster, from security to observability.",
+      "From compliance mapping for PCI & DORA to automated policy enforcement, get all the tools you need to secure your entire software development lifecycle.",
   },
 ];
 

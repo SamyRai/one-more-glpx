@@ -43,7 +43,13 @@ function Header() {
             <NavLink to="/starter-pack" className={navLinkClasses}>
               Starter Pack
             </NavLink>
-            <NavLink to="/book" className={navLinkClasses}>
+            <NavLink to="/product" className={navLinkClasses}>
+              Product
+            </NavLink>
+            <NavLink to="/about" className={navLinkClasses}>
+              About
+            </NavLink>
+            <NavLink to="/book" className="text-muted-foreground hover:underline">
               Book a free call
             </NavLink>
             <Button
@@ -128,6 +134,16 @@ function Header() {
               <Button variant="ghost" className="justify-start" asChild>
                 <Link to="/starter-pack" onClick={closeMenu}>
                   Starter Pack
+                </Link>
+              </Button>
+              <Button variant="ghost" className="justify-start" asChild>
+                <Link to="/product" onClick={closeMenu}>
+                  Product
+                </Link>
+              </Button>
+              <Button variant="ghost" className="justify-start" asChild>
+                <Link to="/about" onClick={closeMenu}>
+                  About
                 </Link>
               </Button>
               <Button variant="ghost" className="justify-start" asChild>

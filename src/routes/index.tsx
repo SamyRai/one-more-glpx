@@ -10,6 +10,8 @@ import Privacy from "@/pages/Privacy";
 import Contact from "@/pages/Contact";
 import NotFound from "@/pages/NotFound";
 import MarketingPage from "@/pages/Marketing";
+import AboutPage from "@/pages/About";
+import ProductPage from "@/pages/Product";
 import { Page } from "@/components/ui/Page";
 
 function AnimatedRoutes() {
@@ -83,6 +85,22 @@ function AnimatedRoutes() {
           element={
             <Page>
               <MarketingPage />
+            </Page>
+          }
+        />
+        <Route
+          path="/about"
+          element={
+            <Page>
+              <AboutPage />
+            </Page>
+          }
+        />
+        <Route
+          path="/product"
+          element={
+            <Page>
+              <ProductPage />
             </Page>
           }
         />
