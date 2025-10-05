@@ -10,13 +10,15 @@ import { Testimonials } from '@/components/sections/Testimonials';
 import { PricingSection } from '@/components/sections/PricingSection';
 import { CTA } from '@/components/sections/CTA';
 import { FAQ } from '@/components/sections/FAQ';
+import { CustomerStories } from '@/components/sections/CustomerStories';
+import { NewsletterSection } from '@/components/sections/NewsletterSection';
 
 function Home() {
   return (
     <main>
       <Seo
-        title="Kubernetes Security Baseline"
-        description="Gateway API TLS configured correctly, admission policies live (VAP/CEL + Kyverno where needed), secrets at rest, minimal Falco eBPF alerts, and logging/retention templates that map to PCI/DORA/NIS2."
+        title="Automated Kubernetes Security and Compliance"
+        description="Achieve a robust security baseline and auditor-ready compliance for Kubernetes with our automated platform. Secure your cloud-native environment with confidence."
         schema={organizationSchema}
         canonical="/"
       />
@@ -26,8 +28,10 @@ function Home() {
       <HowItWorks />
       <Features />
       <Testimonials />
+      <CustomerStories />
       <PricingSection />
       <FAQ />
+      <NewsletterSection />
       <CTA />
     </main>
   );

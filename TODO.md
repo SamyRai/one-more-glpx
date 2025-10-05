@@ -11,18 +11,18 @@ This file tracks the progress of creating a new set of content-related and marke
 *   [x] `Testimonial` - To display customer testimonials.
 *   [x] `CallToAction` - To encourage user sign-ups.
 
-### Marketing Components (Phase 2 - In Progress)
+### Marketing Components (Phase 2 - Complete)
 
-*   [ ] `TeamSection` - To showcase team members.
-*   [ ] `StatsSection` - To highlight key metrics.
-*   [ ] `NewsletterSignup` - A form for email signups.
-*   [ ] `AnnouncementBanner` - A site-wide banner.
-*   [ ] `ComparisonTable` - To compare features.
-*   [ ] `VideoPlayer` - For embedding videos.
-*   [ ] `ImageGallery` - To showcase images.
-*   [ ] `Roadmap` - To display product roadmap.
-*   [ ] `CaseStudyTeaser` - To feature case studies.
-*   [ ] `Timeline` - To illustrate chronological events.
+*   [x] `TeamSection` - To showcase team members.
+*   [x] `StatsSection` - To highlight key metrics.
+*   [x] `NewsletterSignup` - A form for email signups.
+*   [x] `AnnouncementBanner` - A site-wide banner.
+*   [x] `ComparisonTable` - To compare features.
+*   [x] `VideoPlayer` - For embedding videos.
+*   [x] `ImageGallery` - To showcase images.
+*   [x] `Roadmap` - To display product roadmap.
+*   [x] `CaseStudyTeaser` - To feature case studies.
+*   [x] `Timeline` - To illustrate chronological events.
 
 ## Implementation Details
 
